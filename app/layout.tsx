@@ -1,12 +1,20 @@
+'use client';
 import Image from 'next/image'
+import Link from "next/link";
+import { useEffect } from 'react';
+import { useState } from 'react';
 
-export function NavBar() {
-  return <>
-    <button>Home</button>
-    <button>More Info</button>
-    <button>About</button>
-  </>
-}
+const NavBar = () => {
+  return (
+    <nav className="navbar">
+      <Link href="/">Home</Link>
+      <Link href="/About">About</Link>
+      <Link href="/Pros">More Info</Link>
+      <Link href="/Cons">Contact</Link>
+    </nav>
+  );
+};
+
 
 export default function RootLayout({
   children,
@@ -14,6 +22,36 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
 
+  const[search, setSearch] = useState('')
+  const[text, setText] = useState('')
+console.log(search)
+console.log(text)
+  function handleChange(event:any) {
+    setSearch(event.target.value);
+  }
+
+  function handleClick() {
+      setText(search)
+    }
+
+  function handleEnter(e:any) {
+    if(e.keyCode == 13){
+      setText(search)
+    }
+  }
+
+  async function getFoodBanks(){
+       
+    const res = await fetch('https://www.givefood.org.uk/api/2/locations/search/?address=basildon')
+    const data = await res.json()
+    console.log("helolo")
+    console.log(data)
+    return data as any[];
+
+}
+  useEffect(() => {
+   getFoodBanks()
+  }, [text])
 // [x] logo
 // navbar
 // search bar
@@ -28,6 +66,10 @@ export default function RootLayout({
           height='200'
           />
         <NavBar />
+        <div>
+           <input type ="search" onChange={handleChange} onKeyDown={handleEnter}></input>
+           <button onClick={handleClick}>Submit</button>
+        </div>
         Example text
         {children}
       </body>
