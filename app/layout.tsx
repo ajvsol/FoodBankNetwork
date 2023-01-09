@@ -1,10 +1,13 @@
 'use client';
+
 import Image from 'next/image'
 import Link from "next/link";
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState, useContext, createContext } from 'react';
+//import { handleChange, handleClick, handleEnter } from 
+//import useSearch from '../hooks/useSearch'
+import { SearchContextProvider, useSearchContext } from '../context/search';
 
-const NavBar = () => {
+export function NavBar() {
   return (
     <nav className="navbar">
       <Link href="/">Home</Link>
@@ -15,24 +18,28 @@ const NavBar = () => {
   );
 };
 
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
 
-  const[search, setSearch] = useState('')
-  const[text, setText] = useState('')
-console.log(search)
-console.log(text)
+  const searchContext = useSearchContext();
+  console.log(`searchContext:`, searchContext)
+  
+  const [search, setSearch, text, setText] = searchContext;
+
+  //const[search, setSearch] = useState('')
+  //const[text, setText] = useState('')
+
   function handleChange(event:any) {
+    console.log(`setSearch: `, setSearch)
     setSearch(event.target.value);
   }
 
   function handleClick() {
-      setText(search)
-    }
+    setText(search)
+  }
 
   function handleEnter(e:any) {
     if(e.keyCode == 13){
@@ -41,20 +48,17 @@ console.log(text)
   }
 
   async function getFoodBanks(){
-       
     const res = await fetch('https://www.givefood.org.uk/api/2/locations/search/?address=basildon')
     const data = await res.json()
-    console.log("helolo")
-    console.log(data)
+    //console.log("helolo")
+    //console.log(data)
     return data as any[];
+  }
 
-}
   useEffect(() => {
-   getFoodBanks()
+    getFoodBanks()
   }, [text])
-// [x] logo
-// navbar
-// search bar
+
   return (
     <html>
       <head />
@@ -71,7 +75,9 @@ console.log(text)
            <button onClick={handleClick}>Submit</button>
         </div>
         Example text
-        {children}
+        <SearchContextProvider>
+          {children}
+        </SearchContextProvider>
       </body>
     </html>
   )
