@@ -30,6 +30,10 @@ console.log(text)
     setSearch(event.target.value);
   }
 
+  function handleClick() {
+      setText(search)
+    }
+
   function handleEnter(e:any) {
     if(e.keyCode == 13){
       setText(search)
@@ -62,7 +66,10 @@ console.log(text)
           height='200'
           />
         <NavBar />
+        <div>
            <input type ="search" onChange={handleChange} onKeyDown={handleEnter}></input>
+           <button onClick={handleClick}>Submit</button>
+        </div>
         Example text
         {children}
       </body>
