@@ -40,7 +40,7 @@ export function SearchBar() {
   useEffect(() => {
     async function getFoodBanks() {
       const res = await fetch(
-        "https://www.givefood.org.uk/api/2/locations/search/?address=basildon"
+        `https://www.givefood.org.uk/api/2/locations/search/?address=${text}`
       );
       const data = await res.json();
       console.log(data);
