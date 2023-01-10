@@ -21,34 +21,48 @@ export function SearchBar() {
 
   function handleChange(event: any) {
     setSearch(event.target.value);
-    console.log(`handleChange`);
+    //console.log(`handleChange`);
   }
 
   function handleClick() {
     setText(search);
-    console.log(`handleClick`);
+    //console.log(`handleClick`);
   }
 
   function handleEnter(event: any) {
     if (event.keyCode == 13) {
       setText(search);
-      console.log(`search: `, search);
-      console.log(`text: `, text);
+      //console.log(`search: `, search);
+      //console.log(`text: `, text);
     }
   }
 
+  
   useEffect(() => {
-    async function getFoodBanks() {
-      const res = await fetch(
-        `https://www.givefood.org.uk/api/2/locations/search/?address=${text}`
-      );
-      const data = await res.json();
-      console.log(data);
-      return data as any[];
+      async function getFoodBanks() {
+        try {
+          const res = await fetch(
+            `https://www.givefood.org.uk/api/2/locations/search/?address=${text}`, {
+              method: 'GET', 
+              headers: {
+                accept: 'Access-Control-Allow-Origin'
+              }
+            }
+            
+          );
+          const data = await res.json();
+          console.log(data);
+          return data as any[];
+        } catch (e) {
+          console.log(`getFoodBanks error`)
+          //console.log(e)
+        }
+    } 
+    if (text.length !== 0) {
+      getFoodBanks();
     }
-    getFoodBanks();
-  }, [text]);
-
+  }, [text])
+    
 
   return (
     <div>
