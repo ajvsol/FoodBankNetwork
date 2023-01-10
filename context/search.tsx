@@ -2,6 +2,7 @@ import { createContext, useContext, useState } from 'react';
 
 export const SearchContext = createContext([] as any);
 
+// Context provider
 export function SearchContextProvider({children}: any) {
 	
 	const[search, setSearch] = useState('')
@@ -12,6 +13,7 @@ export function SearchContextProvider({children}: any) {
 	</SearchContext.Provider>
 }
 
+// Custom hook
 export function useSearchContext() {
 	return useContext(SearchContext)
 }
