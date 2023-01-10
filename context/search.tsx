@@ -7,8 +7,9 @@ export function SearchContextProvider({children}: any) {
 	
 	const[search, setSearch] = useState('')
 	const[text, setText] = useState('')
+	const[searchResults, setSearchResults]=useState([])
 
-	return <SearchContext.Provider value={[search, setSearch, text, setText]} >
+	return <SearchContext.Provider value={[search, setSearch, text, setText,searchResults,setSearchResults ]} >
 		{children}
 	</SearchContext.Provider>
 }
