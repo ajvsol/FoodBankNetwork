@@ -1,7 +1,7 @@
 
 const key = process.env.GOOGLE_KEY
 
-export default function Map():JSX.Element {
+export default function Map({coord}:any):JSX.Element {
 
 return(
 <>
@@ -12,7 +12,7 @@ return(
   allowfullscreen
   referrerpolicy="no-referrer-when-downgrade"
   src={`https://www.google.com/maps/embed/v1/place?key=${key}
-    &q=Space+Needle,Seattle+WA`}>
+    &q=${coord}`}>
 </iframe>
 </>)
 }
