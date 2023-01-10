@@ -1,78 +1,104 @@
-'use client';
-import Image from 'next/image'
-import Link from "next/link";
-import { useEffect } from 'react';
-import { useState } from 'react';
+"use client";
 
-const NavBar = () => {
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect } from "react";
+import { SearchContextProvider, useSearchContext } from "../context/search";
+
+export function NavBar() {
   return (
     <nav className="navbar">
       <Link href="/">Home</Link>
       <Link href="/About">About</Link>
-      <Link href="/Pros">More Info</Link>
-      <Link href="/Cons">Contact</Link>
+      <Link href="/Info">More Info</Link>
+      <Link href="/Contact">Contact</Link>
     </nav>
   );
-};
+}
 
+export function SearchBar() {
+  const [search, setSearch, text, setText] = useSearchContext();
+
+  function handleChange(event: any) {
+    setSearch(event.target.value);
+    //console.log(`handleChange`);
+  }
+
+  function handleClick() {
+    setText(search);
+    //console.log(`handleClick`);
+  }
+
+  function handleEnter(event: any) {
+    if (event.keyCode == 13) {
+      setText(search);
+      //console.log(`search: `, search);
+      //console.log(`text: `, text);
+    }
+  }
+
+  
+  useEffect(() => {
+      async function getFoodBanks() {
+        try {
+          const res = await fetch(
+            `https://www.givefood.org.uk/api/2/locations/search/?address=${text}`, {
+              method: 'GET', 
+              headers: {
+                accept: 'Access-Control-Allow-Origin'
+              }
+            }
+            
+          );
+          const data = await res.json();
+          console.log(data);
+          return data as any[];
+        } catch (e) {
+          console.log(`getFoodBanks error`)
+          //console.log(e)
+        }
+    } 
+    if (text.length !== 0) {
+      getFoodBanks();
+    }
+  }, [text])
+    
+
+  return (
+    <div>
+      <input
+        type="search"
+        onChange={handleChange}
+        onKeyDown={handleEnter}
+      ></input>
+      <button onClick={handleClick}>Submit</button>
+    </div>
+  );
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
 
-  const[search, setSearch] = useState('')
-  const[text, setText] = useState('')
-console.log(search)
-console.log(text)
-  function handleChange(event:any) {
-    setSearch(event.target.value);
-  }
-
-  function handleClick() {
-      setText(search)
-    }
-
-  function handleEnter(e:any) {
-    if(e.keyCode == 13){
-      setText(search)
-    }
-  }
-
-  async function getFoodBanks(){
-       
-    const res = await fetch('https://www.givefood.org.uk/api/2/locations/search/?address=basildon')
-    const data = await res.json()
-    console.log("helolo")
-    console.log(data)
-    return data as any[];
-
-}
-  useEffect(() => {
-   getFoodBanks()
-  }, [text])
-// [x] logo
-// navbar
-// search bar
   return (
     <html>
       <head />
       <body>
         <Image
-          src='/../images/foodbanklogo2.svg'
-          alt='logo-image' 
-          width='300'
-          height='200'
-          />
+          src="/../images/foodbanklogo2.svg"
+          alt="logo-image"
+          width="300"
+          height="200"
+        />
         <NavBar />
-        <div>
-           <input type ="search" onChange={handleChange} onKeyDown={handleEnter}></input>
-           <button onClick={handleClick}>Submit</button>
-        </div>
+        <SearchContextProvider>
+          <SearchBar />
+          {children}
+        </SearchContextProvider>
         Example text
-        {children}
       </body>
     </html>
-  )
+  );
 }
