@@ -5,6 +5,8 @@ import { v4 as uuidv4 } from "uuid";
 import { Card } from '@nextui-org/react';
 import Link from "next/link";
 import Map from "../../components/map"
+import { NavBar } from "../layout";
+//import { Navbar } from "@nextui-org/react"; for later checking
 
 
 export default function About() {

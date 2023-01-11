@@ -1,4 +1,7 @@
+'use client';
+
 import Map from "../components/map"
+
 
 
 import { useSearchContext } from "../context/search"
@@ -8,7 +11,6 @@ export default function HomePage() {
 	return (
 		<div>
 		<p>Test</p>
-		<Map coord={location}/>
 		</div>
 	)
 }

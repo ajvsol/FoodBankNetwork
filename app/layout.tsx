@@ -1,9 +1,11 @@
 "use client";
 
+import { useRouter } from 'next/navigation'
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 import { SearchContextProvider, useSearchContext } from "../context/search";
+import Router from 'next/router';
 
 export function NavBar() {
   return (
@@ -18,6 +20,7 @@ export function NavBar() {
 
 export function SearchBar() {
   const [search, setSearch, text, setText, searchResults, setSearchResults] = useSearchContext();
+  const router = useRouter()
 
   function handleChange(event: any) {
     setSearch(event.target.value);
@@ -30,10 +33,12 @@ export function SearchBar() {
     //console.log(`handleClick`);
   }
 
+
   function handleEnter(event: any) {
     if (event.keyCode == 13) {
       getFoodBanks();
       setText(search);
+      router.push('/results')
       console.log(`search: `, search);
       console.log(`text: `, text);
       console.log(`searchResults: `, searchResults)
@@ -94,8 +99,9 @@ export default function RootLayout({
           width="300"
           height="200"
         />
-        <NavBar />
+
         <SearchContextProvider>
+          <NavBar/>
           <SearchBar />
           {children}
         </SearchContextProvider>
