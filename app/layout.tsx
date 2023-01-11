@@ -34,42 +34,14 @@ export function SearchBar() {
     if (event.keyCode == 13) {
       getFoodBanks();
       setText(search);
-      console.log(`search: `, search);
-      console.log(`text: `, text);
-      console.log(`searchResults: `, searchResults)
-      console.log(`length of searchResults:`, searchResults.length)
-      console.log(`typeof searchResults: `, typeof(searchResults))
+      //console.log(`search: `, search);
+      //console.log(`text: `, text);
+      //console.log(`searchResults: `, searchResults)
+      //console.log(`length of searchResults:`, searchResults.length)
+      //console.log(`typeof searchResults: `, typeof(searchResults))
 
     }
   }
-
-  
-  //useEffect(() => {
-  //    async function getFoodBanks() {
-  //      try {
-  //        const res = await fetch(
-  //          `https://www.givefood.org.uk/api/2/locations/search/?address=${text}`, {
-  //            method: 'GET', 
-  //            headers: {
-  //              accept: 'Access-Control-Allow-Origin'
-  //            }
-  //          }
-            
-  //        );
-  //        const data = await res.json();
-  //        //console.log(data);
-  //        setSearchResults(data);
-  //        //console.log(`searchResults: `, searchResults);
-  //        return data as any[];
-  //      } catch (e) {
-  //        console.log(`getFoodBanks error`)
-  //        //console.log(e)
-  //      }
-  //  } 
-  //  if (text.length !== 0) {
-  //    getFoodBanks();
-  //  }
-  //}, [text])
     
   async function getFoodBanks() {
     try {

@@ -49,8 +49,6 @@ const searchResultsExample = [
 	}
 ]
 
-
-
 export const SearchContext = createContext([] as any);
 
 // Context provider
