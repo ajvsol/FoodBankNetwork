@@ -16,7 +16,7 @@ export function NavBar() {
       <Link href="/Contact">Contact</Link>
     </nav>
   );
-}n
+}
 
 export function SearchBar() {
   const [search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation] = useSearchContext();
