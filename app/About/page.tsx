@@ -2,11 +2,16 @@
 
 import { useSearchContext } from "../../context/search"
 import { v4 as uuidv4 } from "uuid";
+import { Card } from '@nextui-org/react';
 
 
 export default function About() {
-	const [search, setSearch, text, setText, searchResults, setSearchResults]: any = useSearchContext();
+	const [search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation]: any = useSearchContext();
 
+	function handleCard(index: number): void {
+    setLocation(searchResults[index].lat_lng);
+    console.log(`handleCard: `, location);
+	}
 
 	return <>
 		<p>About</p>
@@ -15,7 +20,7 @@ export default function About() {
 		<p>searchResults length: {searchResults.length}</p>
 		<div>
 			{searchResults.map((element: any) => {
-				return <p key={uuidv4()}>{element.name}</p> 
+				return <Card key={uuidv4()} onClick={()=>{console.log(element.lat_lng)}}>{element.name}</Card> 
 			})}
 		</div>
 	</>

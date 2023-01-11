@@ -34,11 +34,11 @@ export function SearchBar() {
     if (event.keyCode == 13) {
       getFoodBanks();
       setText(search);
-      //console.log(`search: `, search);
-      //console.log(`text: `, text);
-      //console.log(`searchResults: `, searchResults)
-      //console.log(`length of searchResults:`, searchResults.length)
-      //console.log(`typeof searchResults: `, typeof(searchResults))
+      console.log(`search: `, search);
+      console.log(`text: `, text);
+      console.log(`searchResults: `, searchResults)
+      console.log(`length of searchResults:`, searchResults.length)
+      console.log(`typeof searchResults: `, typeof(searchResults))
 
     }
   }

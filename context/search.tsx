@@ -4,7 +4,27 @@ import { createContext, useContext, useState } from 'react';
 //const searchResultsInitial: Root[] | [] = [];
 const searchResultsInitial: any = [];
 
-const searchResultsExample = [
+export const SearchContext = createContext([] as any);
+
+// Context provider
+export function SearchContextProvider({children}: any) {
+	
+	const[search, setSearch] = useState('')
+	const[text, setText] = useState('')
+	const[searchResults, setSearchResults] = useState(searchResultsInitial)
+	const [location, setLocation] = useState('');
+
+	return <SearchContext.Provider value={[search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation]} >
+		{children}
+	</SearchContext.Provider>
+}
+
+// Custom hook
+export function useSearchContext() {
+	return useContext(SearchContext)
+}
+
+export const searchResultsExample = [
 	{
 		"type": "organisation",
 		"name": "AY Group",
@@ -48,22 +68,3 @@ const searchResultsExample = [
 		}
 	}
 ]
-
-export const SearchContext = createContext([] as any);
-
-// Context provider
-export function SearchContextProvider({children}: any) {
-	
-	const[search, setSearch] = useState('')
-	const[text, setText] = useState('')
-	const[searchResults, setSearchResults] = useState(searchResultsInitial)
-
-	return <SearchContext.Provider value={[search, setSearch, text, setText, searchResults, setSearchResults]} >
-		{children}
-	</SearchContext.Provider>
-}
-
-// Custom hook
-export function useSearchContext() {
-	return useContext(SearchContext)
-}
