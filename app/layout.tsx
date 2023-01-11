@@ -9,14 +9,14 @@ import Router from 'next/router';
 
 export function NavBar() {
   return (
-    <nav className="navbar">
-      <Link href="/">Home</Link>
+    <nav className="bg-red-500">
+      <Link className="text-2xl" href="/">Home</Link>
       <Link href="/About">About</Link>
       <Link href="/Info">More Info</Link>
       <Link href="/Contact">Contact</Link>
     </nav>
   );
-}
+}n
 
 export function SearchBar() {
   const [search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation] = useSearchContext();
