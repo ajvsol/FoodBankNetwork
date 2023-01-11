@@ -9,8 +9,8 @@ export default function About() {
 	const [search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation]: any = useSearchContext();
 
 	function handleCard(index: number): void {
-    setLocation(searchResults[index].lat_lng);
-    console.log(`handleCard: `, location);
+    	setLocation(searchResults[index].lat_lng);
+    	console.log(`handleCard: `, location);
 	}
 
 	return <>
@@ -19,8 +19,8 @@ export default function About() {
 		<p>text: {text}</p>
 		<p>searchResults length: {searchResults.length}</p>
 		<div>
-			{searchResults.map((element: any) => {
-				return <Card key={uuidv4()} onClick={()=>{console.log(element.lat_lng)}}>{element.name}</Card> 
+			{searchResults.map((element: any ,index:number) => {
+				return <Card  isPressable key={uuidv4()} onPress={()=>{handleCard(index)}}>{element.name}</Card> 
 			})}
 		</div>
 	</>
