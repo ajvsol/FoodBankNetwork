@@ -18,15 +18,15 @@ export default function About() {
 	}
 
 	return <>
-		<p>About</p>
 		<p>search: {search}</p>
 		<p>text: {text}</p>
 		<p>searchResults length: {searchResults.length}</p>
 		<div>
 			{searchResults.map((element: any ,index:number) => {
-				return <Card  isPressable key={uuidv4()} onPress={()=>{handleCard(index)}}>{element.name}</Card> 
+				return <Card isPressable key={uuidv4()} onPress={()=>{handleCard(index)}}>{element.name}</Card> 
 			})}
 		</div>
-        <Map coord={location}/>
+		<Map coord={location}/>
+		
 	</>
 }

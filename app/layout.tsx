@@ -19,7 +19,7 @@ export function NavBar() {
 }
 
 export function SearchBar() {
-  const [search, setSearch, text, setText, searchResults, setSearchResults] = useSearchContext();
+  const [search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation] = useSearchContext();
   const router = useRouter()
 
   function handleChange(event: any) {
@@ -28,17 +28,21 @@ export function SearchBar() {
   }
 
   function handleClick() {
-    getFoodBanks()
     setText(search);
+    getFoodBanks();
     //console.log(`handleClick`);
   }
 
 
-  function handleEnter(event: any) {
+  async function handleEnter(event: any) {
     if (event.keyCode == 13) {
-      getFoodBanks();
       setText(search);
-      router.push('/results')
+      let response = await getFoodBanks();
+      if (location == '') {
+        setLocation(searchResults[0].lat_lng)
+      }
+      
+      router.push('/results');
       console.log(`search: `, search);
       console.log(`text: `, text);
       console.log(`searchResults: `, searchResults)
@@ -99,7 +103,6 @@ export default function RootLayout({
           width="300"
           height="200"
         />
-
         <SearchContextProvider>
           <NavBar/>
           <SearchBar />
