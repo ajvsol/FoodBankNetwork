@@ -1,11 +1,16 @@
+'use client';
+
 import Map from "../components/map"
 
-export default function HomePage() {
 
+
+import { useSearchContext } from "../context/search"
+
+export default function HomePage() {
+	const [search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation]: any = useSearchContext();
 	return (
 		<div>
 		<p>Test</p>
-		<Map />
 		</div>
 	)
 }

@@ -1,9 +1,11 @@
 "use client";
 
+import { useRouter } from 'next/navigation'
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 import { SearchContextProvider, useSearchContext } from "../context/search";
+import Router from 'next/router';
 
 export function NavBar() {
   return (
@@ -17,7 +19,8 @@ export function NavBar() {
 }
 
 export function SearchBar() {
-  const [search, setSearch, text, setText, searchResults, setSearchResults] = useSearchContext();
+  const [search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation] = useSearchContext();
+  const router = useRouter()
 
   function handleChange(event: any) {
     setSearch(event.target.value);
@@ -25,20 +28,26 @@ export function SearchBar() {
   }
 
   function handleClick() {
-    getFoodBanks()
     setText(search);
+    getFoodBanks();
     //console.log(`handleClick`);
   }
 
-  function handleEnter(event: any) {
+
+  async function handleEnter(event: any) {
     if (event.keyCode == 13) {
-      getFoodBanks();
       setText(search);
-      //console.log(`search: `, search);
-      //console.log(`text: `, text);
-      //console.log(`searchResults: `, searchResults)
-      //console.log(`length of searchResults:`, searchResults.length)
-      //console.log(`typeof searchResults: `, typeof(searchResults))
+      let response = await getFoodBanks();
+      if (location == '') {
+        setLocation(searchResults[0].lat_lng)
+      }
+      
+      router.push('/results');
+      console.log(`search: `, search);
+      console.log(`text: `, text);
+      console.log(`searchResults: `, searchResults)
+      console.log(`length of searchResults:`, searchResults.length)
+      console.log(`typeof searchResults: `, typeof(searchResults))
 
     }
   }
@@ -94,8 +103,8 @@ export default function RootLayout({
           width="300"
           height="200"
         />
-        <NavBar />
         <SearchContextProvider>
+          <NavBar/>
           <SearchBar />
           {children}
         </SearchContextProvider>
