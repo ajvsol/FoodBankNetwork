@@ -36,7 +36,10 @@ export function SearchBar() {
       setText(search);
       console.log(`search: `, search);
       console.log(`text: `, text);
-      console.log(`searchResult: `, searchResults)
+      console.log(`searchResults: `, searchResults)
+      console.log(`length of searchResults:`, searchResults.length)
+      console.log(`typeof searchResults: `, typeof(searchResults))
+
     }
   }
 
