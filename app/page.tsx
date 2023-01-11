@@ -5,7 +5,7 @@ export default function HomePage() {
 	return (
 		<div>
 		<p>Test</p>
-		<Map/>
+		<Map />
 		</div>
 	)
 }

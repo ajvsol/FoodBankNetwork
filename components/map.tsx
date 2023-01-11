@@ -1,6 +1,6 @@
 
 const key = process.env.GOOGLE_KEY
-
+// call as <Map coord={"51.4965956,-0.099385"}/> 
 export default function Map({coord}:any):JSX.Element {
 
 return(
