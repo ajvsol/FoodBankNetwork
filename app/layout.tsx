@@ -56,6 +56,7 @@ function SearchBar() {
         type="search"
         onChange={handleChange}
         onKeyDown={handleEnter}
+        placeholder="Type Postcode or City"
       ></input>
       <button onClick={handleClick}>Submit</button>
     </div>

@@ -21,7 +21,11 @@ export default function About() {
 		<NavBar/>
 		<div>
 			{searchResults.map((element: any ,index:number) => {
-				return <Card isPressable key={uuidv4()} onPress={()=>{handleCard(index)}}>{element.name}</Card> 
+				return <Card isPressable key={uuidv4()} onPress={()=>{handleCard(index)}}>
+					<p>{element.name}</p>
+					<p>{element.address}</p>
+					<button>More Details</button>
+				</Card>
 			})}
 		</div>
 		<Map coord={location}/>
