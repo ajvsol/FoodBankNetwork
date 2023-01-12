@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import { Card } from '@nextui-org/react';
 import Link from "next/link";
 import Map from "../../components/map"
-import { NavBar } from "../layout";
+import { NavBar } from "../../components/NavBar";
 //import { Navbar } from "@nextui-org/react"; for later checking
 
 
@@ -18,6 +18,7 @@ export default function About() {
 	}
 
 	return <>
+		<NavBar/>
 		<p>search: {search}</p>
 		<p>text: {text}</p>
 		<p>searchResults length: {searchResults.length}</p>

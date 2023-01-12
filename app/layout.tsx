@@ -7,16 +7,6 @@ import { useEffect } from "react";
 import { SearchContextProvider, useSearchContext } from "../context/search";
 import Router from 'next/router';
 
-export function NavBar() {
-  return (
-    <nav className="bg-red-500">
-      <Link className="text-2xl" href="/">Home</Link>
-      <Link href="/About">About</Link>
-      <Link href="/Info">More Info</Link>
-      <Link href="/Contact">Contact</Link>
-    </nav>
-  );
-}
 
 export function SearchBar() {
   const [search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation] = useSearchContext();
@@ -42,7 +32,7 @@ export function SearchBar() {
         setLocation(searchResults[0].lat_lng)
       }
       
-      router.push('/results');
+      router.push('/find');
       console.log(`search: `, search);
       console.log(`text: `, text);
       console.log(`searchResults: `, searchResults)
@@ -104,11 +94,9 @@ export default function RootLayout({
           height="200"
         />
         <SearchContextProvider>
-          <NavBar/>
           <SearchBar />
           {children}
         </SearchContextProvider>
-        Example text
       </body>
     </html>
   );
