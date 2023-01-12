@@ -14,35 +14,18 @@ export function SearchBar() {
 
   function handleChange(event: any) {
     setSearch(event.target.value);
-    //console.log(`handleChange`);
   }
 
   function handleClick() {
-    //setText(search);
     getFoodBanks();
-    if (location == '') {
-      setLocation(searchResults[0].lat_lng)
-    }
-    
     router.push('/find');
   }
 
 
   function handleEnter(event: any) {
     if (event.keyCode == 13) {
-      //setText(event.target.value);
       getFoodBanks();
-      if (location == '') {
-        setLocation(searchResults[0].lat_lng)
-      }
-      
       router.push('/find');
-      console.log(`search: `, search);
-       console.log(`text: `, text);
-       console.log(`searchResults: `, searchResults)
-       //console.log(`length of searchResults:`, searchResults.length)
-      // console.log(`typeof searchResults: `, typeof(searchResults))
-
     }
   }
     
@@ -58,14 +41,11 @@ export function SearchBar() {
           }
         );
         const data = await res.json();
-        //console.log(data);
         setSearchResults(data);
-        //console.log(`searchResults: `, searchResults);
         return data as any[];
       }
     } catch (e) {
-      console.log(`getFoodBanks error`)
-      //console.log(e)
+      alert("Please Try A Different Location")
     }
   }
 

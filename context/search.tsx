@@ -12,7 +12,7 @@ export function SearchContextProvider({children}: any) {
 	const[search, setSearch] = useState('')
 	const[text, setText] = useState('')
 	const[searchResults, setSearchResults] = useState(searchResultsInitial)
-	const [location, setLocation] = useState('parseFloat(55.378052), parseFloat(-3.435973, 17)');
+	const [location, setLocation] = useState('region=GB&zoom=5&center=53.4862, 0.00');
 
 	return <SearchContext.Provider value={[search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation]} >
 		{children}
