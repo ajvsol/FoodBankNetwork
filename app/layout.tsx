@@ -20,24 +20,28 @@ export function SearchBar() {
   function handleClick() {
     setText(search);
     getFoodBanks();
-    //console.log(`handleClick`);
+    if (location == '') {
+      setLocation(searchResults[0].lat_lng)
+    }
+    
+    router.push('/find');
   }
 
 
-  async function handleEnter(event: any) {
+  function handleEnter(event: any) {
     if (event.keyCode == 13) {
       setText(search);
-      let response = await getFoodBanks();
+      getFoodBanks();
       if (location == '') {
         setLocation(searchResults[0].lat_lng)
       }
       
       router.push('/find');
-      console.log(`search: `, search);
-      console.log(`text: `, text);
-      console.log(`searchResults: `, searchResults)
-      console.log(`length of searchResults:`, searchResults.length)
-      console.log(`typeof searchResults: `, typeof(searchResults))
+      // console.log(`search: `, search);
+      // console.log(`text: `, text);
+      // console.log(`searchResults: `, searchResults)
+      // console.log(`length of searchResults:`, searchResults.length)
+      // console.log(`typeof searchResults: `, typeof(searchResults))
 
     }
   }
