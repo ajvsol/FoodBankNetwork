@@ -16,19 +16,19 @@ function SearchBar() {
     setSearch(event.target.value);
   }
 
-  function handleClick() {
-    getFoodBanks();
+  async function handleClick() {
+    await getFoodBanks();
     router.push('/find');
   }
 
 
-  function handleEnter(event: any) {
+  async function handleEnter(event: any) {
     if (event.keyCode == 13) {
-      getFoodBanks();
+      await getFoodBanks();
       router.push('/find');
     }
   }
-    
+
   async function getFoodBanks() {
     try {
       if (search.length !== 0) {
@@ -68,17 +68,22 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
+  const router = useRouter()
+  function homeClick(){
+    Router.push('/')
+  }
   return (
     <html>
       <head />
       <body>
+        <button onClick={homeClick}>
         <Image
           src="/../images/foodbanklogo2.svg"
           alt="logo-image"
           width="300"
           height="200"
         />
+        </button>
         <SearchContextProvider>
           <SearchBar />
           {children}
