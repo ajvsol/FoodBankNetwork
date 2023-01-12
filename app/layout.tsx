@@ -42,6 +42,7 @@ function SearchBar() {
         );
         const data = await res.json();
         setSearchResults(data);
+        console.log(data)
         return data as any[];
       }
     } catch (e) {
