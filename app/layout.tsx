@@ -8,7 +8,7 @@ import { SearchContextProvider, useSearchContext } from "../context/search";
 import Router from 'next/router';
 
 
-export function SearchBar() {
+function SearchBar() {
   const [search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation] = useSearchContext();
   const router = useRouter()
 
