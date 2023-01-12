@@ -45,7 +45,7 @@ function SearchBar() {
         return data as any[];
       }
     } catch (e) {
-      //alert("Please Try A Different Location")
+      alert("Please Try A Different Location")
     }
   }
 
