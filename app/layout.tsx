@@ -70,20 +70,20 @@ export default function RootLayout({
 }) {
   const router = useRouter()
   function homeClick(){
-    Router.push('/')
+    router.push('/')
   }
   return (
     <html>
       <head />
       <body>
-        <button onClick={homeClick}>
+        <a href='/'>
         <Image
           src="/../images/foodbanklogo2.svg"
           alt="logo-image"
           width="300"
           height="200"
         />
-        </button>
+        </a>
         <SearchContextProvider>
           <SearchBar />
           {children}
