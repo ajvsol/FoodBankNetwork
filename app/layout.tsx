@@ -7,16 +7,6 @@ import { useEffect } from "react";
 import { SearchContextProvider, useSearchContext } from "../context/search";
 import Router from 'next/router';
 
-export function NavBar() {
-  return (
-    <nav className="bg-red-500">
-      <Link className="text-2xl" href="/">Home</Link>
-      <Link href="/About">About</Link>
-      <Link href="/Info">More Info</Link>
-      <Link href="/Contact">Contact</Link>
-    </nav>
-  );
-}
 
 export function SearchBar() {
   const [search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation] = useSearchContext();
@@ -30,24 +20,28 @@ export function SearchBar() {
   function handleClick() {
     setText(search);
     getFoodBanks();
-    //console.log(`handleClick`);
+    if (location == '') {
+      setLocation(searchResults[0].lat_lng)
+    }
+    
+    router.push('/find');
   }
 
 
-  async function handleEnter(event: any) {
+  function handleEnter(event: any) {
     if (event.keyCode == 13) {
       setText(search);
-      let response = await getFoodBanks();
+      getFoodBanks();
       if (location == '') {
         setLocation(searchResults[0].lat_lng)
       }
       
-      router.push('/results');
-      console.log(`search: `, search);
-      console.log(`text: `, text);
-      console.log(`searchResults: `, searchResults)
-      console.log(`length of searchResults:`, searchResults.length)
-      console.log(`typeof searchResults: `, typeof(searchResults))
+      router.push('/find');
+      // console.log(`search: `, search);
+      // console.log(`text: `, text);
+      // console.log(`searchResults: `, searchResults)
+      // console.log(`length of searchResults:`, searchResults.length)
+      // console.log(`typeof searchResults: `, typeof(searchResults))
 
     }
   }
@@ -104,11 +98,9 @@ export default function RootLayout({
           height="200"
         />
         <SearchContextProvider>
-          <NavBar/>
           <SearchBar />
           {children}
         </SearchContextProvider>
-        Example text
       </body>
     </html>
   );
