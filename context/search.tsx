@@ -9,9 +9,9 @@ export const SearchContext = createContext([] as any);
 // Context provider
 export function SearchContextProvider({children}: any) {
 	
-	const[search, setSearch] = useState('')
-	const[text, setText] = useState('')
-	const[searchResults, setSearchResults] = useState(searchResultsInitial)
+	const [search, setSearch] = useState('')
+	const [text, setText] = useState('')
+	const [searchResults, setSearchResults] = useState(searchResultsInitial)
 	const [location, setLocation] = useState('region=GB&zoom=5&center=53.4862, 0.00');
 	const [bank, setBank] = useState(searchResultsInitial)
 

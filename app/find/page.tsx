@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import { Card } from '@nextui-org/react';
 import Link from "next/link";
 import Map from "../../components/map"
-import { NavBar } from "../../components/NavBar";
+import { NavBar } from "../../components/NavBar/NavBar";
 import { useRouter } from "next/navigation";
 //import { Navbar } from "@nextui-org/react"; for later checking
 
