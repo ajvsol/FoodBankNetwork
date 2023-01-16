@@ -29,12 +29,12 @@ export default function RootLayout({
     //[grid-template-rows: 200px 1fr]
     //[grid-template-columns: 2fr 1fr]
   return (
-    <html lang='en'
+    <html  lang='en'
     className="bg-[#F3EFE8]
-    dark:bg-gray-900
+    dark:bg-green-900 min-w-full
     ">
       <head />
-      <body>
+      <body className='min-w-full bg-yellow-500'>
         <SearchContextProvider>
           {children}
         </SearchContextProvider>
