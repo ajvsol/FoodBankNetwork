@@ -37,11 +37,11 @@ export default function About() {
   }
 
   return (
-    <div className="bg-blue-500 min-h-screen">
+    <div className="bg-blue-500">
       <NavBar />
       <SearchBar />
-      <div id="Content" className="flex   bg-red-500 min-h-screen ">
-        <Map coord={location} className="min-w-[67%] max-w-[67%] min-h-screen" />
+      <div id="Content" className="flex bg-red-500 min-h-[89vh]">
+        <Map coord={location} className="min-w-[67%] max-w-[67%]" />
         <div id="List" className="min-w-[33%] max-w-[33%]">
           {searchResults.map((element: any, index: number) => {
             return (

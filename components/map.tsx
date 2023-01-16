@@ -6,7 +6,7 @@ export default function Map({ coord }: any): JSX.Element {
   var h = window.innerHeight;
 
   return (
-    <div className="min-h-[60%]">
+    <div className="">
       <iframe
         width="100%"
         height="100%"
