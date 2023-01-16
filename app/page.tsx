@@ -5,9 +5,9 @@ import SearchBar from '../components/SearchBar'
 export default function HomePage() {
 	// minHeight: '100vh' needed to select whole page
 	return (
-		<div style={{background: 'green', minHeight: '100vh', height: '100vh'}} className='h-screen min-h-screen'>
+		<div className='flex flex-col dark:bg-green-400 bg-green-400 h-screen min-h-screen'>
 			<NavBarHome/>
-			<div style={{background: 'red', height: '100%'}} className='h-full flex flex-col justify-center items-center flex-1 bg-red-500'>
+			<div className='bg-red-500 flex flex-col justify-center items-center gap-5 flex-1'>
 				<a href='/'>
 					<Image
 						src="/../images/foodbanklogo2.svg"
@@ -18,9 +18,7 @@ export default function HomePage() {
 					/>
 				</a>
 				<p>Welcome to our site</p>
-				<div className="width-full">
-					<SearchBar/>
-				</div>
+				<SearchBar/>
 			</div>	
 		</div>
 	)

@@ -60,8 +60,8 @@ export default function SearchBar() {
   }
 
   return (
-    <div className="flex items-center content-center">
-      <div className="relative w-full">
+    <div className="flex min-w-[95%] bg-slate-500">
+      <div className="flex w-full relative">
         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
           <svg
             aria-hidden="true"
@@ -82,7 +82,7 @@ export default function SearchBar() {
           onKeyDown={handleEnter}
           type="text"
           id="simple-search"
-          className="text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  
+          className="flex flex-1 self-stretch items-stretch text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full pl-10 p-2.5  
         bg-gray-50 border border-gray-300 text-gray-900 
         dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-200 dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Search"
