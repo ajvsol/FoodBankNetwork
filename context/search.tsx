@@ -14,8 +14,9 @@ export function SearchContextProvider({children}: any) {
 	const[searchResults, setSearchResults] = useState(searchResultsInitial)
 	const [location, setLocation] = useState('region=GB&zoom=5&center=53.4862, 0.00');
 	const [bank, setBank] = useState(searchResultsInitial)
+	const [comments, setComments] = useState([])
 
-	return <SearchContext.Provider value={[search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation, bank, setBank]} >
+	return <SearchContext.Provider value={[search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation, bank, setBank, comments, setComments]} >
 		{children}
 	</SearchContext.Provider>
 }
