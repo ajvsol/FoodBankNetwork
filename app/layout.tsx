@@ -6,13 +6,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 import { SearchContextProvider, useSearchContext } from "../context/search";
-import Router from 'next/router';
-
 
 function SearchBar() {
   const [search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation] = useSearchContext();
   const router = useRouter()
-
+  
   function handleChange(event: any) {
     setSearch(event.target.value);
   }
@@ -20,6 +18,7 @@ function SearchBar() {
   async function handleClick() {
     await getFoodBanks();
     router.push('/find');
+   
   }
 
 
@@ -43,7 +42,6 @@ function SearchBar() {
         );
         const data = await res.json();
         setSearchResults(data);
-        console.log(data)
         return data as any[];
       }
     } catch (e) {

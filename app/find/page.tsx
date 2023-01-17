@@ -7,23 +7,33 @@ import Link from "next/link";
 import Map from "../../components/map"
 import { NavBar } from "../../components/NavBar";
 import { useRouter } from "next/navigation";
+import supabase from "../../components/supabaseClient";
 //import { Navbar } from "@nextui-org/react"; for later checking
 
 
 export default function About() {
 	
-	const [search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation, bank, setBank]: any = useSearchContext();
+	const [search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation, bank, setBank, comments, setComments]: any = useSearchContext();
 	const router = useRouter()
+
+	const fetchComments = async () => {
+                const { data, error } = await supabase
+                .from('comments')
+                .select()
+                console.log(data)
+                setComments(data)
+                
+            }
 
 	function moreInfo(index: number) {
 		setBank(searchResults[index])
 		setLocation(searchResults[index].lat_lng);
 		router.push('/moreInfoBank')
+		fetchComments()
 	  }
 
 	function handleCard(index: number) {
     	setLocation(searchResults[index].lat_lng);
-    	console.log(`handleCard: `, location);
 	}
 	
 
