@@ -10,14 +10,17 @@ export default function HomePage() {
 			<div className='flex flex-col margin items-center gap-5 flex-1'>
 				<a href='/'>
 					<Image
-						src="/../images/foodbanklogo2.svg"
+						src="/logo1.png"
 						alt="logo-image"
 						width="300"
 						height="200"
 						className='flex mt-20'
 					/>
 				</a>
-				<p>Welcome to our site</p>
+				<p
+				className='text-gray-900 dark:text-gray-300'
+				>Find your nearest food bank:
+				</p>
 				<SearchBar/>
 			</div>	
 		</div>
