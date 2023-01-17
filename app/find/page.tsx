@@ -16,11 +16,12 @@ export default function About() {
 	const [search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation, bank, setBank, comments, setComments]: any = useSearchContext();
 	const router = useRouter()
 
-	const fetchComments = async () => {
+	async function fetchComments(index:number) {
+				let slugData = searchResults[index].foodbank.slug
                 const { data, error } = await supabase
                 .from('comments')
                 .select()
-                console.log(data)
+				.like('slug', slugData)
                 setComments(data)
                 
             }
@@ -29,8 +30,9 @@ export default function About() {
 		setBank(searchResults[index])
 		setLocation(searchResults[index].lat_lng);
 		router.push('/moreInfoBank')
-		fetchComments()
+		fetchComments(index)
 	  }
+
 
 	function handleCard(index: number) {
     	setLocation(searchResults[index].lat_lng);
