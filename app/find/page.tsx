@@ -37,17 +37,20 @@ export default function About() {
   }
 
   return (
-    <div className="">
+    <div className="w-full min-h-screen max-h-screen ">
+      <div className="p-3">
       <NavBar />
       <SearchBar />
-      <div id="Content" className="flex justify-items-start bg-red-500 min-h-[60vh] max-h-[72vh] ">
+      </div>
+      <div id="Content" className="flex item   bg-red-500 min-h-[60vh] max-h-[80vh] ">
         <Map coord={location}  />
         <div id="List" className="
         min-w-[33%] max-w-[33%] overflow-auto
+        min-h-full p-3
         ">
           {searchResults.map((element: any, index: number) => {
             return (
-              <Card 
+              <Card className = "p-2" 
                 isPressable
                 key={uuidv4()}
                 onPress={() => {
