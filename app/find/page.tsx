@@ -40,8 +40,8 @@ export default function About() {
     <div className="">
       <NavBar />
       <SearchBar />
-      <div id="Content" className="flex bg-red-500 min-h-[89vh]">
-        <Map coord={location} className="min-w-[67%] max-w-[67%]" />
+      <div id="Content" className="flex justify-items-start bg-red-500 min-h-[60vh] max-h-[72vh] ">
+        <Map coord={location}  />
         <div id="List" className="
         min-w-[33%] max-w-[33%] overflow-auto
         ">
