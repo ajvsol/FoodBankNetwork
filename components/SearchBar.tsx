@@ -60,7 +60,7 @@ export default function SearchBar() {
   }
 
   return (
-    <div className="flex min-w-[95%] bg-slate-500">
+    <div className="flex min-w-[95%]">
       <div className="flex w-full relative">
         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
           <svg
@@ -93,8 +93,8 @@ export default function SearchBar() {
         onClick={handleClick}
         type="submit"
         className="p-2.5 ml-2 text-sm font-medium 
-      text-white bg-[#FF6720] rounded-lg border border-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 
-      dark:bg-[#FF6720] dark:hover:bg-yellow-700 dark:focus:ring-yellow-800"
+      text-white bg-[#FF6720] rounded-lg border border-yellow-700 hover:bg-[#9c0d38] focus:ring-4 focus:outline-none focus:ring-yellow-300 
+      dark:bg-[#FF6720] dark:hover:bg-yellow-500 dark:focus:ring-yellow-800"
       >
         <svg
           className="w-5 h-5"

@@ -31,10 +31,10 @@ export default function RootLayout({
   return (
     <html  lang='en'
     className="bg-[#F3EFE8]
-    dark:bg-green-900 min-w-full
+    dark:bg-gray-900 min-w-full
     ">
       <head />
-      <body className='min-w-full bg-yellow-500'>
+      <body className='min-w-full'>
         <SearchContextProvider>
           {children}
         </SearchContextProvider>
