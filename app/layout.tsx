@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 import { SearchContextProvider, useSearchContext } from "../context/search";
-import { supabaseUrl, supabaseKey } from '../components/supabaseClient';
 function SearchBar() {
   const [search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation] = useSearchContext();
   const router = useRouter()
@@ -18,7 +17,6 @@ function SearchBar() {
   async function handleClick() {
     await getFoodBanks();
     router.push('/find');
-   console.log("supbase", supabaseKey, supabaseUrl)
   }
 
 
