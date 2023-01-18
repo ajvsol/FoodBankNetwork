@@ -2,14 +2,9 @@ const key = "AIzaSyCDcyZflRGQzA2s9vRzqtJ4ATVxEKE64e4";
 // call as <Map coord={"51.4965956,-0.099385"}/>
 export default function Map({ coord }: any): JSX.Element {
 
-  var w = window.innerWidth;
-  var h = window.innerHeight;
 
-  function screener (h:number) {
-    return h/10 *10
-   }
  
-   let help = screener (h)
+
  
 
   return (
