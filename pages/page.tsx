@@ -1,8 +1,9 @@
 import { NavBarHome } from "../components/NavBar/NavBarHome";
 import Image from "next/image";
 import SearchBar from '../components/SearchBar'
+import type { NextPage } from 'next'
 
-export default function HomePage() {
+const Home: NextPage = () => {
 	// minHeight: '100vh' needed to select whole page
 	return (
 		<div className='flex flex-col h-screen min-h-screen'>
@@ -26,3 +27,5 @@ export default function HomePage() {
 		</div>
 	)
 }
+
+export default Home
