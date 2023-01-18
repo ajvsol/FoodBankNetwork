@@ -1,12 +1,16 @@
-import { NavBarHome } from "../components/NavBar/NavBarHome";
-import Image from "next/image";
+import { Inter } from '@next/font/google'
+import { NavBarHome } from '../components/NavBar/NavBarHome'
 import SearchBar from '../components/SearchBar'
+import Image from 'next/image'
 import type { NextPage } from 'next'
+//import '../styles/globals.css'
 
-const Home: NextPage = () => {
-	// minHeight: '100vh' needed to select whole page
-	return (
-		<div className='flex flex-col h-screen min-h-screen'>
+const inter = Inter({ subsets: ['latin'] })
+
+export default function Home() {
+  return (
+    <>
+      <div className='flex flex-col h-screen min-h-screen'>
 			<NavBarHome/>
 			<div className='flex flex-col margin items-center gap-5 flex-1'>
 				<a href='/'>
@@ -25,7 +29,12 @@ const Home: NextPage = () => {
 				<SearchBar/>
 			</div>	
 		</div>
-	)
+      
+          
+      
+         
+        
+           
+    </>
+  )
 }
-
-export default Home
