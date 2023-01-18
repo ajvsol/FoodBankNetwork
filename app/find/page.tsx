@@ -54,8 +54,8 @@ export default function About() {
     <div id='everything'>
       <NavBar />
       <SearchBar />
-      <div id='mobile-content' className=" lg:hidden md:flex-col">
-      <input></input>
+      <div id='mobile-content' className="md:flex-col">
+        <input></input>
         <p>toggle bar</p> 
         <Map coord={location}  />
         <div id="List" className="
@@ -84,7 +84,7 @@ export default function About() {
             })}
         </div>
       </div>
-      <div id="desktop-content" className="md:hidden flex flex-row justify-items-start bg-red-500 min-h-[60vh] max-h-[72vh] ">
+      <div id="desktop-content" className="flex flex-row justify-items-start bg-red-500 min-h-[60vh] max-h-[72vh] ">
         <Map coord={location}  />
         <div id="List" className="
         min-w-[33%] max-w-[33%] overflow-auto
