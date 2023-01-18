@@ -8,7 +8,6 @@ import { useEffect } from "react";
 import { SearchContextProvider, useSearchContext } from "../context/search";
 import Router from 'next/router';
 
-
 export default function RootLayout({
   children,
 }: {
