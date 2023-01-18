@@ -37,20 +37,47 @@ export default function About() {
   }
 
   return (
-    <div className="w-full min-h-screen max-h-screen ">
-      <div className="p-3">
+    <div id='everything'>
       <NavBar />
       <SearchBar />
+      <div id='mobile-content' className=" lg:hidden md:flex-col">
+      <input></input>
+        <p>toggle bar</p> 
+        <Map coord={location}  />
+        <div id="List" className="
+          min-w-[33%] max-w-[33%] overflow-auto
+          ">
+            {searchResults.map((element: any, index: number) => {
+              return (
+                <Card 
+                  isPressable
+                  key={uuidv4()}
+                  onPress={() => {
+                    handleCard(index);
+                  }}>
+                  <p>{element.name}</p>
+                  <p>{element.address}</p>
+                  <div>
+                    <button
+                      onClick={() => {
+                        moreInfo(index);
+                      }}>
+                      More Info
+                    </button>
+                  </div>
+                </Card>
+              );
+            })}
+        </div>
       </div>
-      <div id="Content" className="flex item   bg-red-500 min-h-[60vh] max-h-[80vh] ">
+      <div id="desktop-content" className="md:hidden flex flex-row justify-items-start bg-red-500 min-h-[60vh] max-h-[72vh] ">
         <Map coord={location}  />
         <div id="List" className="
         min-w-[33%] max-w-[33%] overflow-auto
-        min-h-full p-3
         ">
           {searchResults.map((element: any, index: number) => {
             return (
-              <Card className = "p-2" 
+              <Card 
                 isPressable
                 key={uuidv4()}
                 onPress={() => {
