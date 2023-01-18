@@ -3,11 +3,11 @@ import Image from "next/image";
 
 export function NavBar() {
   return (
-    <nav className="p-3 border-gray-200 rounded bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+    <nav className="p-3 border-gray-200 rounded bg-green-500 dark:bg-gray-800 dark:border-gray-700">
       <div className="container flex flex-wrap items-center justify-between mx-auto">
         <a href="#" className="flex items-center">
             <Image
-              src="/../images/foodbanklogo2.svg"
+              src="/logo2.png"
               className="h-6 mr-3 sm:h-10"
               alt="logo-image"
               width="300"

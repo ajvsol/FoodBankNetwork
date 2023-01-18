@@ -1,5 +1,5 @@
 'use client';
-import { NavBar } from "../../components/NavBar";
+import { NavBar } from "../../components/NavBar/NavBar";
 import { AboutComponent } from "../../components/aboutComponent";
 
 export default function About() {
