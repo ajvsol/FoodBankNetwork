@@ -2,7 +2,7 @@
 
 import { useSearchContext } from "../../context/search";
 import { v4 as uuidv4 } from "uuid";
-import { Card } from "@nextui-org/react";
+import { Card, Grid, Text, Button, Row } from "@nextui-org/react";
 import SearchBar from "../../components/SearchBar";
 import Link from "next/link";
 import Map from "../../components/map";
@@ -53,8 +53,8 @@ export default function About() {
   return (
     <div id="everything" className='dark:bg-gray-900'>
       <div className="p-3">
-      <NavBar />
-      <SearchBar />
+        <NavBar />
+        <SearchBar />
       </div>
       <div id="mobile-content" className=" lg:hidden md:flex-col">
         <p>toggle bar</p>
@@ -67,21 +67,27 @@ export default function About() {
           {searchResults.map((element: any, index: number) => {
             return (
               <Card
+                variant="bordered"
                 isPressable
+                color='black'
+                className='bg-black'
                 key={uuidv4()}
                 onPress={() => {
                   handleCard(index);
-                }}>
-                <p>{element.name}</p>
-                <p>{element.address}</p>
-                <div>
-                  <button
-                    onClick={() => {
-                      moreInfo(index);
-                    }}>
-                    More Info
-                  </button>
-                </div>
+                }}
+                >
+                <Card.Header>
+                  <Text b>{element.name}</Text>
+                </Card.Header>
+                {/*<Card.Divider />*/}
+                <Text className='ml-3 mr-3'>{element.address}</Text>
+                {/*<Card.Body>
+                  <Text>{element.address}</Text>
+                </Card.Body>*/}
+                <Card.Divider />
+                <Card.Footer>
+                  <Button size="sm" color='warning' onClick={() => {moreInfo(index)}}>More Info</Button>
+                </Card.Footer>
               </Card>
             );
           })}
@@ -95,33 +101,35 @@ export default function About() {
         min-w-[33%] max-w-[33%] overflow-auto my-3 pr-3">
           <div
           id="List"
-          className="
-          
+          className="space-y-0
         ">
           {searchResults.map((element: any, index: number) => {
             return (
-             
-                <Card
+              <Card
+                variant="bordered"
                 isPressable
+                color='black'
+                className='bg-black'
                 key={uuidv4()}
                 onPress={() => {
                   handleCard(index);
-                }}>
-                <p>{element.name}</p>
-                <p>{element.address}</p>
-                <div>
-                  <button
-                    onClick={() => {
-                      moreInfo(index);
-                    }}>
-                    More Info
-                  </button>
-                </div>
+                }}
+                >
+                <Card.Header>
+                  <Text b>{element.name}</Text>
+                </Card.Header>
+                {/*<Card.Divider />*/}
+                <Text className='ml-3 mr-3'>{element.address}</Text>
+                {/*<Card.Body>
+                  <Text>{element.address}</Text>
+                </Card.Body>*/}
+                <Card.Divider />
+                <Card.Footer>
+                  <Button size="sm" color='warning' onClick={() => {moreInfo(index)}}>More Info</Button>
+                </Card.Footer>
               </Card>
-               
             );
           })}
-         
          </div>
         </div>
       </div>
