@@ -51,7 +51,7 @@ export default function About() {
   }
 
   return (
-    <div id="everything">
+    <div id="everything" className='dark:bg-gray-900'>
       <div className="p-3">
       <NavBar />
       <SearchBar />
@@ -89,7 +89,7 @@ export default function About() {
       </div>
       <div
         id="desktop-content"
-        className=" flex flex-row justify-items-start bg-red-500 min-h-[80vh] max-h-[72vh] ">
+        className=" flex flex-row justify-items-start min-h-[80vh] max-h-[72vh] ">
         <Map coord={location} />
         <div className="
         min-w-[33%] max-w-[33%] overflow-auto my-3 pr-3">
