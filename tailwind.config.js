@@ -7,11 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {},
-    colors: {
-      'peachey': '#F5F5F5'
-    }
+
   },
-  plugins: [ require('tailwind-scrollbar'),
+  plugins: [ require('tailwind-scrollbar')({noncompatible:true})
 ],
   mode: 'jit'
   

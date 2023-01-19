@@ -49,16 +49,16 @@ export default function FindMain () {
     return <div
     id="desktop-content"
     className=" flex flex-row justify-items-start 
-    xs:bg-yellow-700
-    sm:bg-fuchsia-900
-    md:bg-red-500 min-h-[80vh] max-h-[72vh] ">
+   bg-red-500 min-h-[80vh] max-h-[72vh] pr-9">
+        
     <Map coord={location} />
-    <div className=" min-w-[33%] max-w-[33%] overflow-auto my-3 pr-3">
+
+    <div className=" min-w-[33%] max-w-[33%]   bg-blue-500 scrollbar-bg-blue-500 overflow-auto my-3 pr-3">
       <div
       id="List">
       {searchResults.map((element: any, index: number) => {
         return (
-         <div className="p-1"> 
+         <div key="cardpad"className="p-1"> 
             <Card 
                 isPressable
                 key={uuidv4()}
@@ -66,12 +66,13 @@ export default function FindMain () {
             <p>{element.name}</p>
             <p>{element.address}</p>
             <div>
-              <button
+              
+            </div>
+          </Card>
+          <button
                 onClick={() => moreInfo(index)}>
                 More Info
               </button>
-            </div>
-          </Card>
           </div>
            
         );
