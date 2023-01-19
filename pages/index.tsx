@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   return (
     <>
-      <div className='flex flex-col h-screen min-h-screen'>
+      <div className='flex flex-col h-screen min-h-screen bg-peachey'>
 			<NavBarHome/>
 			<div className='flex flex-col margin items-center gap-5 flex-1'>
 				<Link href='/'>

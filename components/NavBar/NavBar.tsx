@@ -3,15 +3,15 @@ import Image from "next/image";
 
 export function NavBar() {
   return (
-    <nav className="p-3 border-gray-200 rounded bg-green-500 dark:bg-gray-800 dark:border-gray-700">
+    <nav className="p-3 border-gray-200 dark:bg-gray-800 dark:border-gray-700">
       <div className="container flex flex-wrap items-center justify-between mx-auto">
         <Link href="#" className="flex items-center">
             <Image
               src="/logo2.png"
               className="h-6 mr-3 sm:h-10"
               alt="logo-image"
-              width="300"
-              height="200"
+              width="150"
+              height="150"
             />
         </Link>
         <button data-collapse-toggle="navbar-solid-bg" type="button" className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-solid-bg" aria-expanded="false">
