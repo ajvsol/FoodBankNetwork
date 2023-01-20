@@ -6,6 +6,4 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 return <SearchContextProvider>
       <Component {...pageProps} />
     </SearchContextProvider>
-  
-    
 }
