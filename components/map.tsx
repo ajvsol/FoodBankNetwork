@@ -24,14 +24,14 @@ export default function Map({ coord, origin}: any): JSX.Element {
 
         </iframe>
        
-        <iframe
+        {/* <iframe
   width="450"
   height="250"
 
   referrerpolicy="no-referrer-when-downgrade"
   src={`https://www.google.com/maps/embed/v1/directions?key=${key}&origin=Oslo+Norway&destination=Telemark+Norway&avoid=tolls|highways`}
   allowfullscreen>
-</iframe>
+</iframe> */}
     </div>
     
     
