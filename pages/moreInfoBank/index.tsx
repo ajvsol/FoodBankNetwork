@@ -1,4 +1,4 @@
-
+"use client";
 import React, {useState} from "react";
 import { useSearchContext } from "../../context/search";
 import Map from "../../components/map";
@@ -6,6 +6,9 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import supabase from "../../components/supabaseClient";
+import SearchBar from "../../components/SearchBar";
+import { NavBar } from "../../components/NavBar/NavBar";
+import { Button, Card, Text } from "@nextui-org/react";
 
 export default function MoreInfoBank() {
   const [
@@ -37,21 +40,37 @@ export default function MoreInfoBank() {
     setMapCode(mapCodeDirections)
   }
 
-  
-
   return (
     <>
-      <div>
-        <button onClick={goBack}>Go Back</button>
+      <div className="p-3">
+        <NavBar />
+        <SearchBar />
       </div>
-      <div>
-        <p>{bank.name}</p>
-        <p>{bank.address}</p>
-        <p>{bank.phone}</p>
-        <p>{bank.email}</p>
-      </div>
-      <h1>Comments</h1>
-      <div>
+      <Button onClick={goBack} color="warning" auto
+      className='ml-3'>
+      Go Back</Button>
+      <Card
+        variant="bordered"
+        color='black'
+        className='bg-black'
+        key={uuidv4()}
+        >
+        <Card.Header>
+            <Text b>{bank.name}</Text>
+        </Card.Header>
+        <Card.Divider />
+        <Text className='ml-3 mr-3'>{bank.address}</Text>
+        <Card.Body>
+          <p>{bank.address}</p>
+          <p>{bank.phone}</p>
+          <p>{bank.email}</p>
+        </Card.Body>
+        <Card.Divider />
+        <Card.Footer>
+        </Card.Footer>
+        </Card>
+      <h1 className='ml-3'>Comments</h1>
+      <div className='ml-3'>
         {comments.map((element: any) => {
           return (
             <div key={uuidv4()}>
@@ -66,7 +85,6 @@ export default function MoreInfoBank() {
         <Map coord={location} origin={search} />
 
         <button onClick={handleClick}>Directions</button>
-
       </div>
     </>
   );
