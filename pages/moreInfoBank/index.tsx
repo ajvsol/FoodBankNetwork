@@ -52,9 +52,9 @@ export default function MoreInfoBank() {
         <Card.Divider />
         <Text className='ml-3 mr-3'>{bank.address}</Text>
         <Card.Body>
-            <p>{bank.address}</p>
-            <p>{bank.phone}</p>
-            <p>{bank.email}</p>
+          <p>{bank.address}</p>
+          <p>{bank.phone}</p>
+          <p>{bank.email}</p>
         </Card.Body>
         <Card.Divider />
         <Card.Footer>
