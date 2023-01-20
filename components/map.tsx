@@ -1,4 +1,4 @@
-const key = "AIzaSyCDcyZflRGQzA2s9vRzqtJ4ATVxEKE64e4";
+const key = process.env.NEXT_PUBLIC_GOOGLE_KEY
 // call as <Map coord={"51.4965956,-0.099385"}/>
 import { useSearchContext } from "../context/search";
 export default function Map({ coord }: any): JSX.Element {
