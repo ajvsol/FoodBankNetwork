@@ -1,27 +1,39 @@
 const key = process.env.NEXT_PUBLIC_GOOGLE_KEY
-// call as <Map coord={"51.4965956,-0.099385"}/>
 import { useSearchContext } from "../context/search";
-export default function Map({ coord }: any): JSX.Element {
-
+import { useState } from "react";
+export default function Map({ coord, origin}: any): JSX.Element {
 
     const [
         toggle,
-        setToggle
+        setToggle,
+        mapCode,
+        setMapCode
       ]: any = useSearchContext();
  
 
- 
+ const mapCoded = `&q=${coord}`
+
+
 
   return (
-    <div className={`min-w-[67vw] rounded-md min-h-[80vh] ${toggle}`}>
+    <div className={`min-w-[67vw] rounded-md min-h-[80vh]  ${toggle}`}>
       <iframe className="min-w-[67vw] rounded-md p-3 min-h-[80vh]"
-          // width={ `${help}px`}
-        // width="100%"
-        // height="100%"
         
-
         loading="lazy"
-        src={`https://www.google.com/maps/embed/v1/place?key=${key}&q=${coord}`}></iframe>
+        src={`https://www.google.com/maps/embed/v1/place?key=${key}${mapCoded}`}>
+
+        </iframe>
+       
+        {/* <iframe
+  width="450"
+  height="250"
+
+  referrerpolicy="no-referrer-when-downgrade"
+  src={`https://www.google.com/maps/embed/v1/directions?key=${key}&origin=Oslo+Norway&destination=Telemark+Norway&avoid=tolls|highways`}
+  allowfullscreen>
+</iframe> */}
     </div>
+    
+    
   );
 }

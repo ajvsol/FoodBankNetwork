@@ -1,5 +1,5 @@
 "use client";
-
+import React, {useState} from "react";
 import { useSearchContext } from "../../context/search";
 import Map from "../../components/map";
 import { useRouter } from "next/navigation";
@@ -24,11 +24,20 @@ export default function MoreInfoBank() {
     setBank,
     comments,
     setComments,
+    setMapCode,
+    mapCode
   ]: any = useSearchContext();
   const router = useRouter();
 
   function goBack() {
     router.push("/find");
+  }
+
+  const mapCodeDirections = `&origin=${search}&destination=${location}`
+
+ function handleClick () {
+    console.log (mapCode)
+    setMapCode(mapCodeDirections)
   }
 
   return (
@@ -73,7 +82,9 @@ export default function MoreInfoBank() {
       </div>
 
       <div>
-        <Map coord={location} />
+        <Map coord={location} origin={search} />
+
+        <button onClick={handleClick}>Directions</button>
       </div>
     </>
   );
