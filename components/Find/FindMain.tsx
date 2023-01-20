@@ -1,3 +1,5 @@
+
+
 import React, { useState } from "react";
 import Map from "../map";
 import { useSearchContext } from "../../context/search";
@@ -89,7 +91,7 @@ export default function FindMain() {
     }
     return (
       <>
-        <Map coord={location} />
+        <Map coord={location}  />
         <div className=" min-w-[33%] max-w-[33%]  max-h-[80vh]  bg-red-500 scrollbar-bg-blue-500 overflow-auto my-3 pr-3">
           <div id="List">
             {searchResults.map((element: any, index: number) => {

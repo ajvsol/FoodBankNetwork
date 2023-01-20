@@ -16,8 +16,9 @@ export function SearchContextProvider({children}: any) {
 	const [bank, setBank] = useState(searchResultsInitial)
 	const [comments, setComments] = useState([])
 	const [toggle, setToggle] = useState("hidden")
+	const [mapCode, setMapCode] = useState ('default')
 
-	return <SearchContext.Provider value={[search, setSearch, text, setText, results, setResults, location, setLocation, bank, setBank, comments, setComments, toggle, setToggle]} >
+	return <SearchContext.Provider value={[search, setSearch, text, setText, results, setResults, location, setLocation, bank, setBank, comments, setComments, toggle, setToggle, mapCode, setMapCode]} >
 		{children}
 	</SearchContext.Provider>
 }
