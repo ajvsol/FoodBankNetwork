@@ -1,5 +1,4 @@
-const key = "AIzaSyCDcyZflRGQzA2s9vRzqtJ4ATVxEKE64e4";
-// call as <Map coord={"51.4965956,-0.099385"}/>
+const key = process.env.NEXT_PUBLIC_GOOGLE_KEY
 import { useSearchContext } from "../context/search";
 import { useState } from "react";
 export default function Map({ coord, origin}: any): JSX.Element {
