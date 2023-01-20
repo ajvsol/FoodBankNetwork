@@ -69,8 +69,8 @@ export default function About() {
               <Card
                 variant="bordered"
                 isPressable
-                color='black'
-                className='bg-black'
+                //color='black' does't work, try CSS
+                //className='bg-black'
                 key={uuidv4()}
                 onPress={() => {
                   handleCard(index);
