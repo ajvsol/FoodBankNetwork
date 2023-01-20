@@ -29,7 +29,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-, "app/aboutHome", "app/contactHome"  ],
+, "app/aboutHome", "app/contactHome", "tailwind.config.js"  ],
   "exclude": [
     "node_modules"
   ]

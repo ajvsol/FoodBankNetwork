@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import { Card, Grid, Text, Button, Row } from "@nextui-org/react";
 import SearchBar from "../../components/SearchBar";
 import Link from "next/link";
+// import FindMain from "../../components/Find/FindMain";
 import Map from "../../components/map";
 import { NavBar } from "../../components/NavBar/NavBar";
 import { useRouter } from "next/navigation";
@@ -56,6 +57,7 @@ export default function About() {
         <NavBar />
         <SearchBar />
       </div>
+      {/* <FindMain/> */}
       <div id="mobile-content" className=" lg:hidden md:flex-col">
         <p>toggle bar</p>
         <Map coord={location} />

@@ -60,7 +60,7 @@ export default function SearchBar() {
   }
 
   return (
-    <div className="flex min-w-[95%]">
+    <div className="flex min-w-[95%]  shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]" >
       <div className="flex w-full relative">
         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
           <svg

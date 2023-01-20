@@ -7,7 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {},
+
   },
-  plugins: [],
+  plugins: [ require('tailwind-scrollbar')({noncompatible:true})
+],
   mode: 'jit'
+  
 }
