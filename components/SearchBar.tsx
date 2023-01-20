@@ -14,13 +14,15 @@ export default function SearchBar() {
     setSearch,
     text,
     setText,
-    searchResults,
-    setSearchResults,
+    results,
+    setResults,
     location,
     setLocation,
   ] = useSearchContext();
   const router = useRouter();
 
+
+  console.log("SetResults:", setResults)
   function handleChange(event: any) {
     setSearch(event.target.value);
   }
@@ -50,9 +52,11 @@ export default function SearchBar() {
           }
         );
         const data = await res.json();
-        setSearchResults(data);
-        console.log(data);
-        return data as any[];
+        console.log("DATA:", data)
+        setResults(data);
+        console.log("response:",data);
+        // return data as any[];
+        console.log("searchResultsFunction:", results)
       }
     } catch (e) {
       alert("Please Try A Different Location");

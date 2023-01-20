@@ -11,13 +11,13 @@ export function SearchContextProvider({children}: any) {
 	
 	const [search, setSearch] = useState('')
 	const [text, setText] = useState('')
-	const [searchResults, setSearchResults] = useState(searchResultsInitial)
+	const [results, setResults] = useState([])
 	const [location, setLocation] = useState('region=GB&zoom=5&center=53.4862, 0.00');
 	const [bank, setBank] = useState(searchResultsInitial)
 	const [comments, setComments] = useState([])
 	const [toggle, setToggle] = useState("hidden")
 
-	return <SearchContext.Provider value={[search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation, bank, setBank, comments, setComments, toggle, setToggle]} >
+	return <SearchContext.Provider value={[search, setSearch, text, setText, results, setResults, location, setLocation, bank, setBank, comments, setComments, toggle, setToggle]} >
 		{children}
 	</SearchContext.Provider>
 }

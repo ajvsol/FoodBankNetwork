@@ -13,7 +13,7 @@ export default function Map({ coord }: any): JSX.Element {
  
 
   return (
-    <div className={`min-w-[67vw] rounded-md min-h-[80vh] ${toggle}`}>
+    <div className={`min-w-[67vw] rounded-md min-h-[80vh]  ${toggle}`}>
       <iframe className="min-w-[67vw] rounded-md p-3 min-h-[80vh]"
           // width={ `${help}px`}
         // width="100%"
