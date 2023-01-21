@@ -7,11 +7,13 @@ export function NavBar() {
     <Navbar fluid={true} rounded={true} className="p-3 border-gray-200 rounded bg-gray-100  dark:bg-gray-800 dark:border-gray-700">
       <Link href="#" className="flex items-center ">
         {/*Swapped from Image because it prevents using Tailwind media queries for sizing*/}
-         <img
+         <Image
             src="/logo2.png"
+            width="100"
+            height="100"
             className="h-6 sm:h-10 sm:w-36 lg:w-36"
             alt="logo-image"
-          ></img>
+          ></Image>
      </Link>
       <Navbar.Toggle />
       <Navbar.Collapse>
