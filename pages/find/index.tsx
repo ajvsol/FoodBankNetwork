@@ -90,7 +90,7 @@ export default function About() {
         <div
           id="List"
           className="
-          min-w-[33%] max-w-[33%] overflow-auto
+          overflow-auto
           ">
           {searchResults.map((element: any, index: number) => {
             return (
