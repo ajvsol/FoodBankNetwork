@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import Map from "../map";
 import { useSearchContext } from "../../context/search";
@@ -9,6 +7,62 @@ import { useRouter } from "next/router";
 import supabase from "../supabaseClient";
 import ToggleMap from "../ToggleMap/ToggleMap";
 import { Size, useWindowSize } from "../../hooks/hooks";
+
+
+function renderContent() {
+  if (windowWidth < 450) {
+    if (showMap) {
+      return <Map coord={location} />;
+    }
+    return (
+      <div className=" min-w-[33%] max-w-[33%]   bg-green-500 scrollbar-bg-blue-500 overflow-auto my-3 pr-3">
+        <div id="List">
+          {searchResults.map((element: any, index: number) => {
+            return (
+              <div key="cardpad" className="p-1">
+                <Card
+                  isPressable
+                  key={uuidv4()}
+                  onPress={() => handleCard(index)}
+                >
+                  <p>{element.name}</p>
+                  <p>{element.address}</p>
+                  <div></div>
+                </Card>
+                <button onClick={() => moreInfo(index)}>More Info</button>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <>
+        <Map coord={location} />
+        <div className=" min-w-[33%] max-w-[33%]  max-h-[80vh]  bg-red-500 scrollbar-bg-blue-500 overflow-auto my-3 pr-3">
+          <div id="List">
+            {searchResults.map((element: any, index: number) => {
+              return (
+                <div key="cardpad" className="p-1">
+                  <Card
+                    isPressable
+                    key={uuidv4()}
+                    onPress={() => handleCard(index)}
+                  >
+                    <p>{element.name}</p>
+                    <p>{element.address}</p>
+                    <div></div>
+                  </Card>
+                  <button onClick={() => moreInfo(index)}>More Info</button>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </>
+    );
+  }
 
 export default function FindMain() {
   const size: Size = useWindowSize();
@@ -58,74 +112,26 @@ export default function FindMain() {
   }
 
   function handleToggle() {
-    console.log ("THINGS HAPPENING")
-    setShowMap(!showMap)
+    console.log("THINGS HAPPENING");
+    setShowMap(!showMap);
   }
 
-  export function FindMain () {
-    if (windowWidth < 450) {
-      if (showMap) {
-        return <Map coord={location} />;
-      } return (
-        <div className=" min-w-[33%] max-w-[33%]   bg-green-500 scrollbar-bg-blue-500 overflow-auto my-3 pr-3">
-          <div id="List">
-            {searchResults.map((element: any, index: number) => {
-              return (
-                <div key="cardpad" className="p-1">
-                  <Card
-                    isPressable
-                    key={uuidv4()}
-                    onPress={() => handleCard(index)}>
-                    <p>{element.name}</p>
-                    <p>{element.address}</p>
-                    <div></div>
-                  </Card>
-                  <button onClick={() => moreInfo(index)}>More Info</button>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      );
-    } else {
-      return (
-        <>
-          <Map coord={location}  />
-          <div className=" min-w-[33%] max-w-[33%]  max-h-[80vh]  bg-red-500 scrollbar-bg-blue-500 overflow-auto my-3 pr-3">
-            <div id="List">
-              {searchResults.map((element: any, index: number) => {
-                return (
-                  <div key="cardpad" className="p-1">
-                    <Card
-                      isPressable
-                      key={uuidv4()}
-                      onPress={() => handleCard(index)}>
-                      <p>{element.name}</p>
-                      <p>{element.address}</p>
-                      <div></div>
-                    </Card>
-                    <button onClick={() => moreInfo(index)}>More Info</button>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </>
-      );
-  };
+  
 
-  return (
-    <div
-      id="desktop-content"
-      className="   justify-items-start sm:bg-blue-500 
-   bg-red-500 min-h-[80vh] max-h-[72vh] sm:flex-col pr-9">
-      <ToggleMap handleToggle={handleToggle} showMap={showMap} />
+    return (
       <div
-        id="main-content-wrapper"
-        className=" flex  xs:flex-col sm:flex-col md:flex-row lg:flex-row">
-        {renderContent()}
-      
+        id="desktop-content"
+        className="   justify-items-start sm:bg-blue-500 
+   bg-red-500 min-h-[80vh] max-h-[72vh] sm:flex-col pr-9"
+      >
+        <ToggleMap handleToggle={handleToggle} showMap={showMap} />
+        <div
+          id="main-content-wrapper"
+          className=" flex  xs:flex-col sm:flex-col md:flex-row lg:flex-row"
+        >
+          {renderContent()}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
