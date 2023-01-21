@@ -69,7 +69,7 @@ export default function About() {
         <SearchBar />
       </div>
       {/* <FindMain/> */}
-      <div id="mobile-content" className=" lg:hidden md:flex-col">
+      <div id="mobile-content" className="md:hidden lg:hidden md:flex-col">
         <label className="relative inline-flex items-center sm:hidden cursor-pointer">
           <input
             type="checkbox"
@@ -121,7 +121,7 @@ export default function About() {
       </div>
       <div
         id="desktop-content"
-        className=" flex flex-row justify-items-start min-h-[80vh] max-h-[72vh] ">
+        className="hidden md:flex lg:flex flex-row justify-items-start min-h-[80vh] max-h-[72vh]  lg:visible  ">
         <Map coord={location} />
         <div className="
         min-w-[33%] max-w-[33%] overflow-auto my-3 pr-3">
