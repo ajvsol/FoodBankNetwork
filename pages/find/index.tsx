@@ -2,7 +2,8 @@
 
 import { useSearchContext } from "../../context/search";
 import { v4 as uuidv4 } from "uuid";
-import { Card, Grid, Text, Button, Row } from "@nextui-org/react";
+//import { Text, Card, Grid, Button, Row } from "@nextui-org/react";
+import { Card, Button } from 'flowbite-react';
 import SearchBar from "../../components/SearchBar";
 import Link from "next/link";
 // import FindMain from "../../components/Find/FindMain";
@@ -94,27 +95,7 @@ export default function About() {
           ">
           {searchResults.map((element: any, index: number) => {
             return (
-              <Card
-                variant="bordered"
-                isPressable
-                key={uuidv4()}
-                onPress={() => {
-                  handleCard(index);
-                }}
-                >
-                <Card.Header>
-                  <Text b>{element.name}</Text>
-                </Card.Header>
-                {/*<Card.Divider />*/}
-                <Text className='ml-3 mr-3'>{element.address}</Text>
-                {/*<Card.Body>
-                  <Text>{element.address}</Text>
-                </Card.Body>*/}
-                <Card.Divider />
-                <Card.Footer>
-                  <Button size="sm" color='warning' onClick={() => {moreInfo(index)}}>More Info</Button>
-                </Card.Footer>
-              </Card>
+              <div key={uuidv4()}></div>
             );
           })}
         </div>
@@ -132,28 +113,56 @@ export default function About() {
           {searchResults.map((element: any, index: number) => {
             return (
               <Card
-                variant="bordered"
-                isPressable
-                color='black'
-                className='bg-black'
                 key={uuidv4()}
-                onPress={() => {
-                  handleCard(index);
-                }}
+                onClick={() => {handleCard(index)}}
+                className='hover:cursor-pointer'
                 >
-                <Card.Header>
-                  <Text b>{element.name}</Text>
-                </Card.Header>
-                {/*<Card.Divider />*/}
-                <Text className='ml-3 mr-3'>{element.address}</Text>
-                {/*<Card.Body>
-                  <Text>{element.address}</Text>
-                </Card.Body>*/}
-                <Card.Divider />
-                <Card.Footer>
-                  <Button size="sm" color='warning' onClick={() => {moreInfo(index)}}>More Info</Button>
-                </Card.Footer>
+                <h5 className="text-l font-bold tracking-tight text-gray-900 dark:text-white">
+                  {element.name}
+                </h5>
+                <p className="font-light text-gray-900 dark:text-gray-300">
+                  {element.address}</p>
+                <Button
+                  onClick={() => {moreInfo(index)}}
+                  >
+                  More Info
+                  <svg
+                    className="ml-2 -mr-1 h-4 w-4"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </Button>
               </Card>
+              //<Card
+              //  variant="bordered"
+              //  isPressable
+              //  color='black'
+              //  className='bg-black'
+              //  key={uuidv4()}
+              //  onPress={() => {
+              //    handleCard(index);
+              //  }}
+              //  >
+              //  <Card.Header>
+              //    <Text b>{element.name}</Text>
+              //  </Card.Header>
+              //  {/*<Card.Divider />*/}
+              //  <Text className='ml-3 mr-3'>{element.address}</Text>
+              //  {/*<Card.Body>
+              //    <Text>{element.address}</Text>
+              //  </Card.Body>*/}
+              //  <Card.Divider />
+              //  <Card.Footer>
+              //    <Button size="sm" color='warning' onClick={() => {moreInfo(index)}}>More Info</Button>
+              //  </Card.Footer>
+              //</Card>
             );
           })}
          </div>
