@@ -11,7 +11,20 @@ import Map from "../../components/map";
 import { NavBar } from "../../components/NavBar/NavBar";
 import { useRouter } from "next/navigation";
 import supabase from "../../components/supabaseClient";
+//import { Html, Head, Main, NextScript } from 'next/document'
 //import { Navbar } from "@nextui-org/react"; for later checking
+
+function handleCardHighlighted() {
+  // give every card a new class e.g. ${higlighted}
+    // this will state defaults as null or maybe ('bg-), but otherwise 
+
+  // alternate
+  // use location state, makes it easier to unhighlight
+  
+  const element = About();
+    console.log(`Card: `, element)
+    console.dir(`Card: `, element)
+}
 
 export default function About() {
   const [
@@ -51,8 +64,13 @@ export default function About() {
 
   function handleCard(index: number) {
     setLocation(searchResults[index].lat_lng);
+    //handleCardHighlighted();
     console.log(`handleCard: `, location);
+    //console.log(`DOM: `, NextScript)
+    //"bg-green-500 dark:bg-green 500"
   }
+
+  
 
   function handleToggle() {
     if (toggle == "hidden") {
@@ -95,7 +113,34 @@ export default function About() {
           ">
           {searchResults.map((element: any, index: number) => {
             return (
-              <div key={uuidv4()}></div>
+              <Card
+              key={index}
+              onClick={() => {handleCard(index)}}
+              className="hover:cursor-pointer"
+              >
+              <h5 className="text-l font-bold tracking-tight text-gray-900 dark:text-white">
+                {element.name}
+              </h5>
+              <p className="font-light text-gray-900 dark:text-gray-300">
+                {element.address}</p>
+              <Button
+                onClick={() => {moreInfo(index)}}
+                >
+                More Info
+                <svg
+                  className="ml-2 -mr-1 h-4 w-4"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </Button>
+            </Card>
             );
           })}
         </div>
@@ -113,9 +158,10 @@ export default function About() {
           {searchResults.map((element: any, index: number) => {
             return (
               <Card
-                key={uuidv4()}
+                key={index}
                 onClick={() => {handleCard(index)}}
-                className='hover:cursor-pointer'
+                //onClick={() => {this.parentNode.style.backgroundColour='red'}}
+                className={`hover:cursor-pointer`}
                 >
                 <h5 className="text-l font-bold tracking-tight text-gray-900 dark:text-white">
                   {element.name}
@@ -140,29 +186,6 @@ export default function About() {
                   </svg>
                 </Button>
               </Card>
-              //<Card
-              //  variant="bordered"
-              //  isPressable
-              //  color='black'
-              //  className='bg-black'
-              //  key={uuidv4()}
-              //  onPress={() => {
-              //    handleCard(index);
-              //  }}
-              //  >
-              //  <Card.Header>
-              //    <Text b>{element.name}</Text>
-              //  </Card.Header>
-              //  {/*<Card.Divider />*/}
-              //  <Text className='ml-3 mr-3'>{element.address}</Text>
-              //  {/*<Card.Body>
-              //    <Text>{element.address}</Text>
-              //  </Card.Body>*/}
-              //  <Card.Divider />
-              //  <Card.Footer>
-              //    <Button size="sm" color='warning' onClick={() => {moreInfo(index)}}>More Info</Button>
-              //  </Card.Footer>
-              //</Card>
             );
           })}
          </div>
