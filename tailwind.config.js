@@ -31,4 +31,5 @@ module.exports = {
     require("flowbite/plugin"),
   ],
   mode: "jit",
+  darkMode: 'media',
 };
