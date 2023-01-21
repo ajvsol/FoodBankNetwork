@@ -1,5 +1,5 @@
 "use client";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useSearchContext } from "../../context/search";
 import Map from "../../components/map";
 import { useRouter } from "next/navigation";
@@ -25,7 +25,7 @@ export default function MoreInfoBank() {
     comments,
     setComments,
     setMapCode,
-    mapCode
+    mapCode,
   ]: any = useSearchContext();
   const router = useRouter();
 
@@ -33,11 +33,11 @@ export default function MoreInfoBank() {
     router.push("/find");
   }
 
-  const mapCodeDirections = `&origin=${search}&destination=${location}`
+  const mapCodeDirections = `&origin=${search}&destination=${location}`;
 
- function handleClick () {
-    console.log (mapCode)
-    setMapCode(mapCodeDirections)
+  function handleClick() {
+    console.log(mapCode);
+    setMapCode(mapCodeDirections);
   }
 
   return (
@@ -46,31 +46,30 @@ export default function MoreInfoBank() {
         <NavBar />
         <SearchBar />
       </div>
-      <Button onClick={goBack} color="warning" auto
-      className='ml-3'>
-      Go Back</Button>
+      <Button onClick={goBack} color="warning" auto className="ml-3">
+        Go Back
+      </Button>
       <Card
         variant="bordered"
-        color='black'
-        className='bg-black'
+        color="black"
+        className="bg-black"
         key={uuidv4()}
-        >
+      >
         <Card.Header>
-            <Text b>{bank.name}</Text>
+          <Text b>{bank.name}</Text>
         </Card.Header>
         <Card.Divider />
-        <Text className='ml-3 mr-3'>{bank.address}</Text>
+        <Text className="ml-3 mr-3">{bank.address}</Text>
         <Card.Body>
           <p>{bank.address}</p>
           <p>{bank.phone}</p>
           <p>{bank.email}</p>
         </Card.Body>
         <Card.Divider />
-        <Card.Footer>
-        </Card.Footer>
-        </Card>
-      <h1 className='ml-3'>Comments</h1>
-      <div className='ml-3'>
+        <Card.Footer></Card.Footer>
+      </Card>
+      <h1 className="ml-3">Comments</h1>
+      <div className="ml-3">
         {comments.map((element: any) => {
           return (
             <div key={uuidv4()}>
