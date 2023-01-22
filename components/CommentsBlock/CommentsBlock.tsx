@@ -1,17 +1,13 @@
-import { Card, Label, Textarea } from "flowbite-react";
+import { Button, Card, Label, Textarea } from "flowbite-react";
 
 export default function CommentsBlock({data}: any) {
   return (
     <>
-      <h1 className=" text-gray-900 text-xl p-2 dark:text-gray-300">
-        Comments
-      </h1>
-
       <div id="textarea">
-        <div className="mb-2 block">
+        <div className="mb-2 block p-2">
           <Label
             htmlFor="comment"
-            value="Your message"
+            value="Your comment"
           />
         </div>
         <Textarea
@@ -21,6 +17,12 @@ export default function CommentsBlock({data}: any) {
           rows={4}
         />
       </div>
+      <Button type="submit" onClick={() => console.log("submit comment")} className='m-2'>
+        Submit
+      </Button>
+      <h1 className=" text-gray-900 text-xl p-2 dark:text-gray-300">
+        Comments
+      </h1>
       <div className="text-gray-900 dark:text-gray-300 space-y-1">
         {data.map((element: any, index: any) => {
           return (
