@@ -47,15 +47,6 @@ export default function MobileMapListSwitch() {
     <div id="MobileMapListSwitch" className="flex space-x-3 p-1 justify-evenly">
       <Button
         onClick={() => {
-          handleMobileMapSwitch();
-        }}
-        size="lg"
-        disabled={showMap}
-      >
-        Map
-      </Button>
-      <Button
-        onClick={() => {
           handleMobileListSwitch();
         }}
         size="lg"
@@ -63,6 +54,16 @@ export default function MobileMapListSwitch() {
       >
         List
       </Button>
+      <Button
+        onClick={() => {
+          handleMobileMapSwitch();
+        }}
+        size="lg"
+        disabled={showMap}
+      >
+        Map
+      </Button>
+      
     </div>
   );
 }
