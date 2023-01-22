@@ -11,6 +11,7 @@ import { NavBar } from "../../components/NavBar/NavBar";
 //import { Button, Card, Text } from "@nextui-org/react";
 import { Card, Button } from "flowbite-react";
 import CommentsBlock from "../../components/CommentsBlock/CommentsBlock";
+import MobileMapListSwitch from "../../components/MobileMapListSwitch";
 
 export default function MoreInfoBank() {
   const [
@@ -26,8 +27,16 @@ export default function MoreInfoBank() {
     setBank,
     comments,
     setComments,
-    setMapCode,
+    toggle,
+    setToggle,
     mapCode,
+    setMapCode,
+    showMap,
+    setShowMap,
+    tailwindMobileMap,
+    setTailwindMobileMap,
+    tailwindMobileList,
+    setTailwindMobileList,
   ]: any = useSearchContext();
 
   const router = useRouter();
@@ -50,17 +59,17 @@ export default function MoreInfoBank() {
         <NavBar />
         <SearchBar />
       </div>
-      <Button onClick={goBack} color="warning" className="ml-3">
+      <Button onClick={goBack} color="warning" className="ml-3 m-1">
         Go Back
       </Button>
       <div id="mobile-content" className="md:hidden lg:hidden md:flex-col">
-        <Map coord={location} />
+        <MobileMapListSwitch/>
+        <Map coord={location} visibility={tailwindMobileMap}/>
         <div
           id="List"
-          className="
-            overflow-auto
-            "
-        >
+          className={`
+            overflow-auto p-2 ${tailwindMobileList}
+          `}>
           <Card className="">
             <h5 className="text-l font-bold tracking-tight text-gray-900 dark:text-white">
               {element.name}
@@ -94,6 +103,7 @@ export default function MoreInfoBank() {
               </svg>
             </Button>
           </Card>
+          <CommentsBlock data={comments} />
         </div>
       </div>
       <div
@@ -106,7 +116,7 @@ export default function MoreInfoBank() {
           className="
             overflow-auto
             "
-        >
+          >
           <Card className="">
             <h5 className="text-l font-bold tracking-tight text-gray-900 dark:text-white">
               {element.name}
@@ -140,9 +150,9 @@ export default function MoreInfoBank() {
               </svg>
             </Button>
           </Card>
+          <CommentsBlock data={comments} />
         </div>
       </div>
-      <CommentsBlock data={comments} />
     </>
   );
 }

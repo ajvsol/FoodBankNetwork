@@ -11,6 +11,7 @@ import Map from "../../components/map";
 import { NavBar } from "../../components/NavBar/NavBar";
 import { useRouter } from "next/navigation";
 import supabase from "../../components/supabaseClient";
+import MobileMapListSwitch from "../../components/MobileMapListSwitch";
 
 export default function About() {
   const [
@@ -70,61 +71,14 @@ export default function About() {
     console.log("toggle:", toggle);
   }
 
-  function handleMobileMapSwitch() {
-    setShowMap(true);
-    console.log(`showMap=`, showMap);
-    setTailwindMobileMap("sm:flex");
-    setTailwindMobileList("sm:hidden");
-  }
-
-  function handleMobileListSwitch() {
-    setShowMap(false);
-    console.log(`showMap=`, showMap);
-    setTailwindMobileMap("sm:hidden");
-    setTailwindMobileList("sm:flex-col");
-  }
-
-  //if (showMap) {
-  //  setTailwindMobileMap("sm:flex")
-  //  setTailwindMobileList("sm:hidden")
-  //} else {
-  //  setTailwindMobileMap("sm:hidden")
-  //  setTailwindMobileList("sm:flex-col")
-  //}
-
-  console.log(`showMap=`, showMap);
-  console.log(`tailwindMobileList=`, tailwindMobileList);
-  console.log(`tailwindMobileMap=`, tailwindMobileMap);
-
   return (
     <div id="everything" className="dark:bg-gray-900">
       <div className="p-3">
         <NavBar />
         <SearchBar />
       </div>
-      {/* <FindMain/> */}
       <div id="mobile-content" className="md:hidden lg:hidden md:flex-col">
-        <div id='MobileMapListSwitch'
-        className='flex space-x-3 p-1 justify-evenly'>
-          <Button
-            onClick={() => {
-              handleMobileMapSwitch();
-            }}
-            size='lg'
-            disabled={showMap}
-          >
-            Map
-          </Button>
-          <Button
-            onClick={() => {
-              handleMobileListSwitch();
-            }}
-            size='lg'
-            disabled={!showMap}
-          >
-            List
-          </Button>
-        </div>
+        <MobileMapListSwitch/>
         <Map coord={location} visibility={tailwindMobileMap} />
         <div
           id="List"

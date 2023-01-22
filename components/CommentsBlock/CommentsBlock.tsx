@@ -3,10 +3,10 @@ import { Card } from "flowbite-react";
 export default function CommentsBlock({data}: any) {
   return (
     <>
-      <h1 className="ml-3 text-gray-900 text-xl p-2 dark:text-gray-300">
+      <h1 className=" text-gray-900 text-xl p-2 dark:text-gray-300">
         Comments
       </h1>
-      <div className="ml-3 text-gray-900 dark:text-gray-300">
+      <div className="text-gray-900 dark:text-gray-300 space-y-1">
         {data.map((element: any, index: any) => {
           return (
             <Card key={index} className="">
