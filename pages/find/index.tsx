@@ -3,7 +3,7 @@
 import { useSearchContext } from "../../context/search";
 import { v4 as uuidv4 } from "uuid";
 //import { Text, Card, Grid, Button, Row } from "@nextui-org/react";
-import { Card, Button } from 'flowbite-react';
+import { Card, Button } from "flowbite-react";
 import SearchBar from "../../components/SearchBar";
 import Link from "next/link";
 // import FindMain from "../../components/Find/FindMain";
@@ -11,20 +11,6 @@ import Map from "../../components/map";
 import { NavBar } from "../../components/NavBar/NavBar";
 import { useRouter } from "next/navigation";
 import supabase from "../../components/supabaseClient";
-//import { Html, Head, Main, NextScript } from 'next/document'
-//import { Navbar } from "@nextui-org/react"; for later checking
-
-function handleCardHighlighted() {
-  // give every card a new class e.g. ${higlighted}
-    // this will state defaults as null or maybe ('bg-), but otherwise 
-
-  // alternate
-  // use location state, makes it easier to unhighlight
-  
-  const element = About();
-    console.log(`Card: `, element)
-    console.dir(`Card: `, element)
-}
 
 export default function About() {
   const [
@@ -41,7 +27,15 @@ export default function About() {
     comments,
     setComments,
     toggle,
-    setToggle
+    setToggle,
+    mapCode,
+    setMapCode,
+    showMap,
+    setShowMap,
+    tailwindMobileMap,
+    setTailwindMobileMap,
+    tailwindMobileList,
+    setTailwindMobileList,
   ]: any = useSearchContext();
   const router = useRouter();
 
@@ -51,7 +45,7 @@ export default function About() {
       .from("comments")
       .select()
       .like("slug", slugData);
-	  console.log("supabase url", supabase)
+    console.log("supabase url", supabase);
     setComments(data);
   }
 
@@ -64,25 +58,46 @@ export default function About() {
 
   function handleCard(index: number) {
     setLocation(searchResults[index].lat_lng);
-    //handleCardHighlighted();
     console.log(`handleCard: `, location);
-    //console.log(`DOM: `, NextScript)
-    //"bg-green-500 dark:bg-green 500"
   }
-
-  
 
   function handleToggle() {
     if (toggle == "hidden") {
-      setToggle("")
-     } else {
-      setToggle("hidden")
+      setToggle("");
+    } else {
+      setToggle("hidden");
     }
-    console.log ("toggle:", toggle)
+    console.log("toggle:", toggle);
   }
 
+  function handleMobileMapSwitch() {
+    setShowMap(true);
+    console.log(`showMap=`, showMap);
+    setTailwindMobileMap("sm:flex");
+    setTailwindMobileList("sm:hidden");
+  }
+
+  function handleMobileListSwitch() {
+    setShowMap(false);
+    console.log(`showMap=`, showMap);
+    setTailwindMobileMap("sm:hidden");
+    setTailwindMobileList("sm:flex-col");
+  }
+
+  //if (showMap) {
+  //  setTailwindMobileMap("sm:flex")
+  //  setTailwindMobileList("sm:hidden")
+  //} else {
+  //  setTailwindMobileMap("sm:hidden")
+  //  setTailwindMobileList("sm:flex-col")
+  //}
+
+  console.log(`showMap=`, showMap);
+  console.log(`tailwindMobileList=`, tailwindMobileList);
+  console.log(`tailwindMobileMap=`, tailwindMobileMap);
+
   return (
-    <div id="everything" className='dark:bg-gray-900'>
+    <div id="everything" className="dark:bg-gray-900">
       <div className="p-3">
         <NavBar />
         <SearchBar />
@@ -105,72 +120,47 @@ export default function About() {
         </label>
 
         <p className={`${toggle}`}>OOOOOOOOOOOOOOOOOOO</p>
-        <Map coord={location} />
+        <Button
+          onClick={() => {
+            handleMobileMapSwitch();
+          }}
+        >
+          Map
+        </Button>
+        <Button
+          onClick={() => {
+            handleMobileListSwitch();
+          }}
+        >
+          List
+        </Button>
+        <Map coord={location} visibility={tailwindMobileMap} />
         <div
           id="List"
-          className="
-          overflow-auto
-          ">
-          {searchResults.map((element: any, index: number) => {
-            return (
-              <Card
-              key={index}
-              onClick={() => {handleCard(index)}}
-              className="hover:cursor-pointer"
-              >
-              <h5 className="text-l font-bold tracking-tight text-gray-900 dark:text-white">
-                {element.name}
-              </h5>
-              <p className="font-light text-gray-900 dark:text-gray-300">
-                {element.address}</p>
-              <Button
-                onClick={() => {moreInfo(index)}}
-                >
-                More Info
-                <svg
-                  className="ml-2 -mr-1 h-4 w-4"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </Button>
-            </Card>
-            );
-          })}
-        </div>
-      </div>
-      <div
-        id="desktop-content"
-        className="hidden md:flex lg:flex flex-row justify-items-start min-h-[80vh] max-h-[72vh]  lg:visible  ">
-        <Map coord={location} />
-        <div className="
-        min-w-[33%] max-w-[33%] overflow-auto my-3 pr-3">
-          <div
-          id="List"
-          className="space-y-0
-        ">
+          className={`
+          overflow-auto ${tailwindMobileList}
+          `}
+        >
           {searchResults.map((element: any, index: number) => {
             return (
               <Card
                 key={index}
-                onClick={() => {handleCard(index)}}
-                //onClick={() => {this.parentNode.style.backgroundColour='red'}}
-                className={`hover:cursor-pointer`}
-                >
+                onClick={() => {
+                  handleCard(index);
+                }}
+                className="hover:cursor-pointer"
+              >
                 <h5 className="text-l font-bold tracking-tight text-gray-900 dark:text-white">
                   {element.name}
                 </h5>
                 <p className="font-light text-gray-900 dark:text-gray-300">
-                  {element.address}</p>
+                  {element.address}
+                </p>
                 <Button
-                  onClick={() => {moreInfo(index)}}
-                  >
+                  onClick={() => {
+                    moreInfo(index);
+                  }}
+                >
                   More Info
                   <svg
                     className="ml-2 -mr-1 h-4 w-4"
@@ -188,7 +178,60 @@ export default function About() {
               </Card>
             );
           })}
-         </div>
+        </div>
+      </div>
+      <div
+        id="desktop-content"
+        className="hidden md:flex lg:flex flex-row justify-items-start min-h-[80vh] max-h-[72vh]  lg:visible  "
+      >
+        <Map coord={location} />
+        <div
+          className="
+        min-w-[33%] max-w-[33%] overflow-auto my-3 pr-3"
+        >
+          <div
+            id="List"
+            className="space-y-0
+        "
+          >
+            {searchResults.map((element: any, index: number) => {
+              return (
+                <Card
+                  key={index}
+                  onClick={() => {
+                    handleCard(index);
+                  }}
+                  className={`hover:cursor-pointer`}
+                >
+                  <h5 className="text-l font-bold tracking-tight text-gray-900 dark:text-white">
+                    {element.name}
+                  </h5>
+                  <p className="font-light text-gray-900 dark:text-gray-300">
+                    {element.address}
+                  </p>
+                  <Button
+                    onClick={() => {
+                      moreInfo(index);
+                    }}
+                  >
+                    More Info
+                    <svg
+                      className="ml-2 -mr-1 h-4 w-4"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </Button>
+                </Card>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
