@@ -3,22 +3,28 @@ import { createContext, useContext, useState } from 'react';
 
 //const searchResultsInitial: Root[] | [] = [];
 const searchResultsInitial: any = [];
+const showMapInitial: boolean = true;
 
 export const SearchContext = createContext([] as any);
 
 // Context provider
 export function SearchContextProvider({children}: any) {
 	
+	
 	const [search, setSearch] = useState('')
 	const [text, setText] = useState('')
-	const [results, setResults] = useState([])
+	const [searchResults, setSearchResults] = useState([])
 	const [location, setLocation] = useState('region=GB&zoom=5&center=53.4862, 0.00');
 	const [bank, setBank] = useState(searchResultsInitial)
 	const [comments, setComments] = useState([])
 	const [toggle, setToggle] = useState("hidden")
 	const [mapCode, setMapCode] = useState ('default')
+	const [showMap, setShowMap] = useState(showMapInitial);
+	const [tailwindMobileMap, setTailwindMobileMap] = useState("sm:flex");
+	const [tailwindMobileList, setTailwindMobileList] = useState("sm:hidden");
 
-	return <SearchContext.Provider value={[search, setSearch, text, setText, results, setResults, location, setLocation, bank, setBank, comments, setComments, toggle, setToggle, mapCode, setMapCode]} >
+	// Note: because using array destructuring need to array destructure out EVERY value on pages it's imported on, otherwise the values will get mixed up due to index order
+	return <SearchContext.Provider value={[search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation, bank, setBank, comments, setComments, toggle, setToggle, mapCode, setMapCode, showMap, setShowMap, tailwindMobileMap, setTailwindMobileMap, tailwindMobileList, setTailwindMobileList]} >
 		{children}
 	</SearchContext.Provider>
 }
