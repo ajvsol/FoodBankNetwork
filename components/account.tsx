@@ -13,9 +13,6 @@ export default function Account({ session }: { session: Session }) {
   const [website, setWebsite] = useState<Profiles['website']>(null)
   const [avatar_url, setAvatarUrl] = useState<Profiles['avatar_url']>(null)
 
-
-  console.log(`username:`, username)
-
   useEffect(() => {
     getProfile()
   }, [session])
@@ -39,9 +36,9 @@ export default function Account({ session }: { session: Session }) {
 
       if (data) {
         console.log(`username:`, username)
-        //setUsername(data.username)
-        //setWebsite(data.website)
-        //setAvatarUrl(data.avatar_url)
+        setUsername(data.username)
+        setWebsite(data.website)
+        setAvatarUrl(data.avatar_url)
         console.log(`username:`, username)
         console.dir(`data:`, data) // object with 3 null properties
 
@@ -91,12 +88,12 @@ export default function Account({ session }: { session: Session }) {
       <div>
         <div className="mb-2 block">
           <Label
-            htmlFor="email1"
+            htmlFor="email"
             value="Your email"
           />
         </div>
         <TextInput
-          id="email1"
+          id="email"
           type="email"
           placeholder={session.user.email}
           disabled={true}
@@ -106,7 +103,7 @@ export default function Account({ session }: { session: Session }) {
       <div>
         <div className="mb-2 block">
           <Label
-            htmlFor="username1"
+            htmlFor="username"
             value="Your username"
           />
         </div>
@@ -119,7 +116,7 @@ export default function Account({ session }: { session: Session }) {
       <div>
         <div className="mb-2 block">
           <Label
-            htmlFor="website1"
+            htmlFor="website"
             value="Your website"
           />
         </div>
