@@ -61,7 +61,6 @@ export default function MoreInfoBank() {
         <Card.Divider />
         <Text className="ml-3 mr-3">{bank.address}</Text>
         <Card.Body>
-          <p>{bank.address}</p>
           <p>{bank.phone}</p>
           <p>{bank.email}</p>
         </Card.Body>
@@ -79,7 +78,6 @@ export default function MoreInfoBank() {
           );
         })}
       </div>
-
       <div>
         <Map coord={location} origin={search} />
 

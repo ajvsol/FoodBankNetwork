@@ -4,8 +4,10 @@ import SearchBar from '../components/SearchBar'
 import Image from 'next/image'
 import type { NextPage } from 'next'
 import Link from 'next/link'
+import Login from '../components/login'
 
 const inter = Inter({ subsets: ['latin'] })
+
 
 export default function Home() {
   return (
