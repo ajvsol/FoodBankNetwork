@@ -10,7 +10,6 @@ export const SearchContext = createContext([] as any);
 // Context provider
 export function SearchContextProvider({children}: any) {
 	
-	
 	const [search, setSearch] = useState('')
 	const [text, setText] = useState('')
 	const [searchResults, setSearchResults] = useState([])
