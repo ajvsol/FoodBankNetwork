@@ -2,7 +2,7 @@ const key = process.env.NEXT_PUBLIC_GOOGLE_KEY
 import { useSearchContext } from "../context/search";
 import { useState } from "react";
 
-export default function Map({ coord, origin}: any): JSX.Element {
+export default function Map({ coord, visibility}: any): JSX.Element {
 
     const [
         toggle,
@@ -17,7 +17,7 @@ export default function Map({ coord, origin}: any): JSX.Element {
 
 
   return (
-    <div className={`lg:min-w-[67vw] lg:min-h-[80vh] rounded-md  ${toggle}`}>
+    <div className={`lg:min-w-[67vw] lg:min-h-[80vh] rounded-md ${visibility}`}>
       <iframe className="md:min-w-[67vw] min-h-[80vh] sm:min-w-[100vw] rounded-md p-3"
         
         loading="lazy"
