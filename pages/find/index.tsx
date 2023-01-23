@@ -1,5 +1,5 @@
 "use client";
-
+import { useState, useReducer } from "react";
 import { useSearchContext } from "../../context/search";
 import { v4 as uuidv4 } from "uuid";
 //import { Text, Card, Grid, Button, Row } from "@nextui-org/react";
@@ -39,6 +39,11 @@ export default function About() {
     setTailwindMobileList,
   ]: any = useSearchContext();
   const router = useRouter();
+
+   const [cardIndex, setCardIndex] = useState(0)
+  //  const [cssToggle, setCssToggle] = useState("bg-blue-500")
+
+
 
   async function fetchComments(index: number) {
     let slugData = searchResults[index].foodbank.slug;
@@ -130,16 +135,29 @@ export default function About() {
             className="space-y-1
         "
           >
-            {searchResults.map((element: any, index: number) => {
+            {searchResults.map((element: any, index: number) => { 
+              function thing(index:number) {
+                if (cardIndex === index)
+               return "bg-[#A5BE00]"
+              }
+            
               return (
-                <Card
+
+                <Card 
                   key={index}
                   onClick={() => {
                     handleCard(index);
+                    setCardIndex(index);
+                    thing(index)
                   }}
-                  className={`hover:cursor-pointer`}
+                  className={ `hover:cursor-pointer
+                   
+                   ${thing(index)}
+                  hover:bg-green-500 
+                  active:bg-yellow-700
+                  focus:bg-red-500`}
                 >
-                  <h5 className="text-l font-bold tracking-tight text-gray-900 dark:text-white">
+                  <h5 className="text-l font-bold tracking-tight text-gray-900  dark:text-white">
                     {element.name}
                   </h5>
                   <p className="font-light text-gray-900 dark:text-gray-300">
