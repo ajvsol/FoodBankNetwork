@@ -23,7 +23,7 @@ export function SearchContextProvider({children}: any) {
 	const [tailwindMobileList, setTailwindMobileList] = useState("sm:flex-col");
 
 	// Note: because using array destructuring need to array destructure out EVERY value on pages it's imported on, otherwise the values will get mixed up due to index order
-	return <SearchContext.Provider value={[search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation, bank, setBank, comments, setComments, toggle, setToggle, mapCode, setMapCode, showMap, setShowMap, tailwindMobileMap, setTailwindMobileMap, tailwindMobileList, setTailwindMobileList]} >
+	return <SearchContext.Provider value={[search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation, bank, setBank, comments, setComments, toggle, setToggle, mapCode, setMapCode, showMap, setShowMap, tailwindMobileMap, setTailwindMobileMap, tailwindMobileList, setTailwindMobileList ]} >
 		{children}
 	</SearchContext.Provider>
 }
