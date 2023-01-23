@@ -152,7 +152,7 @@ export default function About() {
                   }}
                   className={ `hover:cursor-pointer
                    
-                   ${thing(index)}
+                   ${selectedCardCheck(index)}
                   hover:bg-green-500 
                   active:bg-yellow-700
                   focus:bg-red-500`}
