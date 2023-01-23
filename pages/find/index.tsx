@@ -14,30 +14,7 @@ import supabase from "../../components/supabaseClient";
 import MobileMapListSwitch from "../../components/MobileMapListSwitch";
 
 export default function About() {
-  const [
-    search,
-    setSearch,
-    text,
-    setText,
-    searchResults,
-    setSearchResults,
-    location,
-    setLocation,
-    bank,
-    setBank,
-    comments,
-    setComments,
-    toggle,
-    setToggle,
-    mapCode,
-    setMapCode,
-    showMap,
-    setShowMap,
-    tailwindMobileMap,
-    setTailwindMobileMap,
-    tailwindMobileList,
-    setTailwindMobileList,
-  ]: any = useSearchContext();
+  const [search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation, bank, setBank, comments, setComments, toggle, setToggle, mapCode, setMapCode, showMap, setShowMap, tailwindMobileMap, setTailwindMobileMap, tailwindMobileList, setTailwindMobileList, commentInput, setCommentInput, usernameGlobal, setUsernameGlobal]: any = useSearchContext();
   const router = useRouter();
 
   async function fetchComments(index: number) {

@@ -14,30 +14,7 @@ import CommentsBlock from "../../components/CommentsBlock/CommentsBlock";
 import MobileMapListSwitch from "../../components/MobileMapListSwitch";
 
 export default function MoreInfoBank() {
-  const [
-    search,
-    setSearch,
-    text,
-    setText,
-    searchResults,
-    setSearchResults,
-    location,
-    setLocation,
-    bank,
-    setBank,
-    comments,
-    setComments,
-    toggle,
-    setToggle,
-    mapCode,
-    setMapCode,
-    showMap,
-    setShowMap,
-    tailwindMobileMap,
-    setTailwindMobileMap,
-    tailwindMobileList,
-    setTailwindMobileList,
-  ]: any = useSearchContext();
+  const [search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation, bank, setBank, comments, setComments, toggle, setToggle, mapCode, setMapCode, showMap, setShowMap, tailwindMobileMap, setTailwindMobileMap, tailwindMobileList, setTailwindMobileList, commentInput, setCommentInput, usernameGlobal, setUsernameGlobal]: any = useSearchContext();
 
   const router = useRouter();
   const element = bank;
@@ -52,6 +29,23 @@ export default function MoreInfoBank() {
     console.log(mapCode);
     setMapCode(mapCodeDirections);
   }
+
+  
+// const { data, error } = await supabase
+// .from('countries')
+// .insert({ id: 1, name: 'Denmark' })
+// .select()
+
+  async function insertComment() {
+    console.log()
+    let slugData = bank.foodbank.slug;
+    const { data, error } = await supabase
+      .from("comments")
+      .insert({ slug: slugData, FK_username: usernameGlobal, comment: commentInput})
+      //doesnt rerender after posting yet
+  }
+
+
 
   return (
     <>
@@ -132,8 +126,7 @@ export default function MoreInfoBank() {
             </p>
             <Button
               onClick={() => {
-                console.log("directions clicked");
-              }}
+                insertComment()             }}
             >
               Directions
               <svg

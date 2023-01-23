@@ -21,9 +21,11 @@ export function SearchContextProvider({children}: any) {
 	const [showMap, setShowMap] = useState(showMapInitial);
 	const [tailwindMobileMap, setTailwindMobileMap] = useState("sm:hidden");
 	const [tailwindMobileList, setTailwindMobileList] = useState("sm:flex-col");
+	const [commentInput, setCommentInput] = useState("")
+	const [usernameGlobal, setUsernameGlobal] = useState("")
 
 	// Note: because using array destructuring need to array destructure out EVERY value on pages it's imported on, otherwise the values will get mixed up due to index order
-	return <SearchContext.Provider value={[search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation, bank, setBank, comments, setComments, toggle, setToggle, mapCode, setMapCode, showMap, setShowMap, tailwindMobileMap, setTailwindMobileMap, tailwindMobileList, setTailwindMobileList]} >
+	return <SearchContext.Provider value={[search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation, bank, setBank, comments, setComments, toggle, setToggle, mapCode, setMapCode, showMap, setShowMap, tailwindMobileMap, setTailwindMobileMap, tailwindMobileList, setTailwindMobileList, commentInput, setCommentInput, usernameGlobal, setUsernameGlobal]} >
 		{children}
 	</SearchContext.Provider>
 }

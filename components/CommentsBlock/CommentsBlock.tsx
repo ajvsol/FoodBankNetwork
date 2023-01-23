@@ -1,6 +1,10 @@
 import { Button, Card, Label, Textarea } from "flowbite-react";
+import { useSearchContext } from "../../context/search";
 
 export default function CommentsBlock({data}: any) {
+
+  const [search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation, bank, setBank, comments, setComments, toggle, setToggle, mapCode, setMapCode, showMap, setShowMap, tailwindMobileMap, setTailwindMobileMap, tailwindMobileList, setTailwindMobileList, commentInput, setCommentInput, usernameGlobal, setUsernameGlobal]: any = useSearchContext();
+
   return (
     <>
       <div id="textarea">
@@ -10,11 +14,13 @@ export default function CommentsBlock({data}: any) {
             value="Your comment"
           />
         </div>
+
         <Textarea
           id="comment"
           placeholder="Leave a comment..."
           required={true}
           rows={4}
+          onChange={(e) => setCommentInput(e.target.value)}
         />
       </div>
       <Button type="submit" onClick={() => console.log("submit comment")} className='m-2'>
