@@ -1,5 +1,5 @@
 'use client';
-
+const key = process.env.NEXT_PUBLIC_GOOGLE_KEY
 //import '../styles/globals.css'
 import { useRouter } from 'next/navigation'
 import Image from "next/image";
@@ -10,19 +10,12 @@ import Router from 'next/router';
 
 export default function SearchBar() {
   const [
-    search,
-    setSearch,
-    text,
-    setText,
-    results,
-    setResults,
-    location,
-    setLocation,
+    search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation, bank, setBank, comments, setComments, toggle, setToggle, mapCode, setMapCode, showMap, setShowMap, tailwindMobileMap, setTailwindMobileMap, tailwindMobileList, setTailwindMobileList
   ] = useSearchContext();
   const router = useRouter();
 
 
-  console.log("SetResults:", setResults)
+  console.log("SetResults:", setSearchResults)
   function handleChange(event: any) {
     setSearch(event.target.value);
   }
@@ -30,13 +23,20 @@ export default function SearchBar() {
   async function handleClick() {
     await getFoodBanks();
     router.push("/find");
+   
   }
 
   async function handleEnter(event: any) {
     if (event.keyCode == 13) {
       await getFoodBanks();
       router.push("/find");
+      
     }
+  }
+
+   async function setMap(key:any, location:any ) {
+    setMapCode(`https://www.google.com/maps/embed/v1/place?key=${key}&q=${location}` ) 
+    
   }
 
   async function getFoodBanks() {
@@ -53,8 +53,10 @@ export default function SearchBar() {
         );
         const data = await res.json();
         console.log("DATA:", data)
-        setResults(data);
+        setSearchResults(data);
         setLocation(data[0].lat_lng)
+        setMap(key, data[0].lat_lng)
+
       }
     } catch (e) {
       alert("Please Try A Different Location");

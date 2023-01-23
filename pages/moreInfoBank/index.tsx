@@ -1,4 +1,6 @@
 "use client";
+
+const key = process.env.NEXT_PUBLIC_GOOGLE_KEY
 import React, { useState } from "react";
 import { useSearchContext } from "../../context/search";
 import Map from "../../components/map";
@@ -48,15 +50,17 @@ export default function MoreInfoBank() {
 
 
   // https://www.google.com/maps/embed/v1/place?key=${key}${mapCoded}
+  //`https://www.google.com/maps/embed/v1/directions?key=${key}&origin=${search}&destination=${location}&mode=transit`
 
   
-  const mapCodeDirections = `&origin=${search}&destination=${location}`;
+  //const mapCodeDirections = `&origin=${search}&destination=${location}
+  const mapCodeDirections = `https://www.google.com/maps/embed/v1/directions?key=${key}&origin=${search}&destination=${location}&mode=transit`
 
   function handleClick() {
     console.log ("hello")
    
     setMapCode(mapCodeDirections);
-    console.log(mapCode);
+    console.log("MapCode:", mapCode);
   }
 
   return (
