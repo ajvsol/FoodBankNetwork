@@ -136,7 +136,7 @@ export default function About() {
         "
           >
             {searchResults.map((element: any, index: number) => { 
-              function thing(index:number) {
+              function selectedCardCheck(index:number) {
                 if (cardIndex === index)
                return "bg-[#A5BE00]"
               }
@@ -148,7 +148,7 @@ export default function About() {
                   onClick={() => {
                     handleCard(index);
                     setCardIndex(index);
-                    thing(index)
+                    selectedCardCheck(index)
                   }}
                   className={ `hover:cursor-pointer
                    
