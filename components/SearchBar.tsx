@@ -54,9 +54,7 @@ export default function SearchBar() {
         const data = await res.json();
         console.log("DATA:", data)
         setResults(data);
-        console.log("response:",data);
-        // return data as any[];
-        console.log("searchResultsFunction:", results)
+        setLocation(data[0].lat_lng)
       }
     } catch (e) {
       alert("Please Try A Different Location");
