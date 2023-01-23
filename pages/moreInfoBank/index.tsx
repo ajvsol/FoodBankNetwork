@@ -12,45 +12,16 @@ import { NavBar } from "../../components/NavBar/NavBar";
 import { Card, Button } from "flowbite-react";
 import CommentsBlock from "../../components/CommentsBlock/CommentsBlock";
 import MobileMapListSwitch from "../../components/MobileMapListSwitch";
+import { useUser, useSupabaseClient, Session } from '@supabase/auth-helpers-react'
 
 export default function MoreInfoBank() {
-  const [
-    search,
-    setSearch,
-    text,
-    setText,
-    searchResults,
-    setSearchResults,
-    location,
-    setLocation,
-    bank,
-    setBank,
-    comments,
-    setComments,
-    toggle,
-    setToggle,
-    mapCode,
-    setMapCode,
-    showMap,
-    setShowMap,
-    tailwindMobileMap,
-    setTailwindMobileMap,
-    tailwindMobileList,
-    setTailwindMobileList,
-  ]: any = useSearchContext();
+  const [search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation, bank, setBank, comments, setComments, toggle, setToggle, mapCode, setMapCode, showMap, setShowMap, tailwindMobileMap, setTailwindMobileMap, tailwindMobileList, setTailwindMobileList, commentInput, setCommentInput, usernameGlobal, setUsernameGlobal]: any = useSearchContext();
 
   const router = useRouter();
   const element = bank;
 
   function goBack() {
     router.push("/find");
-  }
-
-  const mapCodeDirections = `&origin=${search}&destination=${location}`;
-
-  function handleClick() {
-    console.log(mapCode);
-    setMapCode(mapCodeDirections);
   }
 
   return (
@@ -103,7 +74,7 @@ export default function MoreInfoBank() {
               </svg>
             </Button>
           </Card>
-          <CommentsBlock data={comments} />
+          <CommentsBlock data={comments}/>
         </div>
       </div>
       <div
@@ -131,9 +102,7 @@ export default function MoreInfoBank() {
               {element.email}
             </p>
             <Button
-              onClick={() => {
-                console.log("directions clicked");
-              }}
+              onClick={() => {console.log('map directions button clicked')}}
             >
               Directions
               <svg
