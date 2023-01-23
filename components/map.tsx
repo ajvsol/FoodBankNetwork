@@ -1,6 +1,6 @@
 const key = process.env.NEXT_PUBLIC_GOOGLE_KEY
 import { useSearchContext } from "../context/search";
-import { useState } from "react";
+import { useState, use } from "react";
 
 export default function Map({ coord, visibility}: any): JSX.Element {
 
@@ -10,6 +10,8 @@ export default function Map({ coord, visibility}: any): JSX.Element {
         mapCode,
         setMapCode
       ]: any = useSearchContext();
+
+  
  
  const mapCoded = `&q=${coord}`
 
@@ -21,14 +23,14 @@ export default function Map({ coord, visibility}: any): JSX.Element {
         src={`https://www.google.com/maps/embed/v1/place?key=${key}${mapCoded}`}>
 
         </iframe>
-        {/* <iframe
+        <iframe
   width="450"
   height="250"
 
-  referrerpolicy="no-referrer-when-downgrade"
-  src={`https://www.google.com/maps/embed/v1/directions?key=${key}&origin=Oslo+Norway&destination=Telemark+Norway&avoid=tolls|highways`}
-  allowfullscreen>
-</iframe> */}
+ 
+  src={`https://www.google.com/maps/embed/v1/directions?key=${key}&origin=Birmingham&destination=B139LU&mode=transit`}
+  >
+</iframe>
     </div>
   );
 }

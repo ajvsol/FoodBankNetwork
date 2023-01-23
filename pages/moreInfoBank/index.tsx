@@ -46,11 +46,17 @@ export default function MoreInfoBank() {
     router.push("/find");
   }
 
+
+  // https://www.google.com/maps/embed/v1/place?key=${key}${mapCoded}
+
+  
   const mapCodeDirections = `&origin=${search}&destination=${location}`;
 
   function handleClick() {
-    console.log(mapCode);
+    console.log ("hello")
+   
     setMapCode(mapCodeDirections);
+    console.log(mapCode);
   }
 
   return (
@@ -132,6 +138,7 @@ export default function MoreInfoBank() {
             </p>
             <Button
               onClick={() => {
+                handleClick()
                 console.log("directions clicked");
               }}
             >
