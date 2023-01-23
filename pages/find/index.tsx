@@ -137,8 +137,6 @@ export default function About() {
           >
             {searchResults.map((element: any, index: number) => { 
               function selectedCardCheck(index:number) {
-                console.log(`cardIndex:`, cardIndex);
-                console.log(`index:`, index)
                 if (cardIndex === index)
                   return "bg-green-500 dark:bg-green-600"
               }
