@@ -13,11 +13,6 @@ export function NavBarHome() {
            md:border-0 md:hover:text-blue-700 hover:text-blue-700 md:p-0 
             dark:text-gray-300 md:dark:hover:text-white dark:hover:text-white"
             >About</Link>
-            <Link href="/contact" 
-            className="block py-2 pl-3 pr-4 text-gray-900 rounded 
-            md:border-0 md:hover:text-blue-700 hover:text-blue-700 md:p-0 
-            dark:text-gray-300 md:dark:hover:text-white dark:hover:text-white"
-            >Contact</Link>
           </ul>
         </div>
       </div>
