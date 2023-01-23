@@ -11,10 +11,7 @@ export default function Map({ coord, visibility}: any): JSX.Element {
         setMapCode
       ]: any = useSearchContext();
  
-
  const mapCoded = `&q=${coord}`
-
-
 
   return (
     <div className={`lg:min-w-[67vw] lg:min-h-[80vh] rounded-md ${visibility}`}>

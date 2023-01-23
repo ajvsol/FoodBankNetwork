@@ -62,15 +62,6 @@ export default function About() {
     console.log(`handleCard: `, location);
   }
 
-  function handleToggle() {
-    if (toggle == "hidden") {
-      setToggle("");
-    } else {
-      setToggle("hidden");
-    }
-    console.log("toggle:", toggle);
-  }
-
   return (
     <div id="everything" className="dark:bg-gray-900">
       <div className="p-3">

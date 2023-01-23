@@ -5,7 +5,7 @@ import { Navbar } from "flowbite-react";
 export function NavBar() {
   return (
     <Navbar fluid={true} rounded={true} className="p-3 border-gray-200 rounded bg-gray-100  dark:bg-gray-800 dark:border-gray-700">
-      <Link href="#" className="flex items-center ">
+      <Link href="/" className="flex items-center ">
         {/*Swapped from Image because it prevents using Tailwind media queries for sizing*/}
          <Image
             src="/logo2.png"

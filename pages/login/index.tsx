@@ -10,7 +10,7 @@ const Login = () => {
   return (
     <>
     <NavBar/>
-    <div className="container" style={{ padding: '50px 0 100px 0' }}>
+    <div className="container text-gray-900 dark:text-gray-200 m-3" style={{ padding: '50px 0 100px 0' }}>
       {!session ? (
         <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} theme="dark" />
       ) : (
