@@ -12,36 +12,26 @@ import { NavBar } from "../../components/NavBar/NavBar";
 import { Card, Button } from "flowbite-react";
 import CommentsBlock from "../../components/CommentsBlock/CommentsBlock";
 import MobileMapListSwitch from "../../components/MobileMapListSwitch";
+import { useUser, useSupabaseClient, Session } from '@supabase/auth-helpers-react'
 
 export default function MoreInfoBank() {
   const [search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation, bank, setBank, comments, setComments, toggle, setToggle, mapCode, setMapCode, showMap, setShowMap, tailwindMobileMap, setTailwindMobileMap, tailwindMobileList, setTailwindMobileList, commentInput, setCommentInput, usernameGlobal, setUsernameGlobal]: any = useSearchContext();
 
   const router = useRouter();
   const element = bank;
+  const user = useUser()
+  let userId = user?.id
 
   function goBack() {
     router.push("/find");
   }
-
-  const mapCodeDirections = `&origin=${search}&destination=${location}`;
-
-  function handleClick() {
-    console.log(mapCode);
-    setMapCode(mapCodeDirections);
-  }
-
-  
-// const { data, error } = await supabase
-// .from('countries')
-// .insert({ id: 1, name: 'Denmark' })
-// .select()
 
   async function insertComment() {
     console.log()
     let slugData = bank.foodbank.slug;
     const { data, error } = await supabase
       .from("comments")
-      .insert({ slug: slugData, FK_username: usernameGlobal, comment: commentInput})
+      .insert([{ uuid_author: userId,  FK_username: usernameGlobal, slug: slugData, comment: commentInput}])
       //doesnt rerender after posting yet
   }
 
