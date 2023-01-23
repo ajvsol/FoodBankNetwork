@@ -1,4 +1,5 @@
 "use client";
+const key = process.env.NEXT_PUBLIC_GOOGLE_KEY
 import { useState, useReducer } from "react";
 import { useSearchContext } from "../../context/search";
 import { v4 as uuidv4 } from "uuid";
@@ -39,14 +40,22 @@ export default function About() {
     fetchComments(index);
   }
 
+  async function setMap(key:any, location:any ) {
+    setMapCode(`https://www.google.com/maps/embed/v1/place?key=${key}&q=${location}` ) 
+  }
+
   function handleCard(index: number) {
     setLocation(searchResults[index].lat_lng);
     console.log(`handleCard: `, location);
+    setMap(key, searchResults[index].lat_lng);
   }
+
+
 
   return (
     <div id="everything" className="dark:bg-gray-900">
       <div className="p-3">
+      
         <NavBar />
         <SearchBar />
       </div>
@@ -64,7 +73,7 @@ export default function About() {
               <Card
                 key={index}
                 onClick={() => {
-                  handleCard(index);
+                  handleCard(index);                
                 }}
                 className="hover:cursor-pointer"
               >
