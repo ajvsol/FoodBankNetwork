@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useUser, useSupabaseClient, Session } from '@supabase/auth-helpers-react'
 import { Database } from '../types/supabase'
-import { TextInput, Checkbox, Label, Button } from "flowbite-react";
-
+import { useSearchContext } from '../context/search'
 type Profiles = Database['public']['Tables']['profiles']['Row']
 
 export default function Account({ session }: { session: Session }) {
@@ -13,13 +12,13 @@ export default function Account({ session }: { session: Session }) {
   const [website, setWebsite] = useState<Profiles['website']>(null)
   const [avatar_url, setAvatarUrl] = useState<Profiles['avatar_url']>(null)
 
+ const [search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation, bank, setBank, comments, setComments, toggle, setToggle, mapCode, setMapCode, showMap, setShowMap, tailwindMobileMap, setTailwindMobileMap, tailwindMobileList, setTailwindMobileList, commentInput, setCommentInput, usernameGlobal, setUsernameGlobal]: any = useSearchContext();
+
   useEffect(() => {
     getProfile()
   }, [session])
 
   async function getProfile() {
-    console.dir(`session: `, session.user)
-
     try {
       setLoading(true)
       if (!user) throw new Error('No user')
@@ -35,13 +34,10 @@ export default function Account({ session }: { session: Session }) {
       }
 
       if (data) {
-        console.log(`username:`, username)
         setUsername(data.username)
+        setUsernameGlobal(data.username)
         setWebsite(data.website)
         setAvatarUrl(data.avatar_url)
-        console.log(`username:`, username)
-        console.dir(`data:`, data) // object with 3 null properties
-
       }
     } catch (error) {
       alert('Error loading user data!')
@@ -85,56 +81,7 @@ export default function Account({ session }: { session: Session }) {
 
   return (
     <div className="form-widget">
-    <form className="flex flex-col gap-4 max-w-lg">
       <div>
-        <div className="mb-2 block">
-          <Label
-            htmlFor="email"
-            value="Your email"
-          />
-        </div>
-        <TextInput
-          id="email"
-          type="email"
-          placeholder={session.user.email}
-          disabled={true}
-          //required={true}
-        />
-      </div>
-      <div>
-        <div className="mb-2 block">
-          <Label
-            htmlFor="username"
-            value="Your username"
-          />
-        </div>
-        <TextInput
-          id="username1"
-          onChange={(e) => setUsername(e.target.value)}
-          //placeholder={session.user.email}
-        />
-      </div>
-      <div>
-        <div className="mb-2 block">
-          <Label
-            htmlFor="website"
-            value="Your website"
-          />
-        </div>
-        <TextInput
-          id="website1"
-          onChange={(e) => setWebsite(e.target.value)}
-          //placeholder={session.user.website}
-        />
-      </div>
-      <Button type="submit" onClick={() => updateProfile({ username, website, avatar_url })}>
-        Update
-      </Button>
-      <Button type="submit" color='failure' onClick={() => supabase.auth.signOut()}>
-        Sign Out
-      </Button>
-    </form>
-    <div className='mt-4'>
         <label htmlFor="email">Email</label>
         <input id="email" type="text" value={session.user.email} disabled />
       </div>

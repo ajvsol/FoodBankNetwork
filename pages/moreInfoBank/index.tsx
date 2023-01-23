@@ -14,32 +14,10 @@ import { NavBar } from "../../components/NavBar/NavBar";
 import { Card, Button } from "flowbite-react";
 import CommentsBlock from "../../components/CommentsBlock/CommentsBlock";
 import MobileMapListSwitch from "../../components/MobileMapListSwitch";
+import { useUser, useSupabaseClient, Session } from '@supabase/auth-helpers-react'
 
 export default function MoreInfoBank() {
-  const [
-    search,
-    setSearch,
-    text,
-    setText,
-    searchResults,
-    setSearchResults,
-    location,
-    setLocation,
-    bank,
-    setBank,
-    comments,
-    setComments,
-    toggle,
-    setToggle,
-    mapCode,
-    setMapCode,
-    showMap,
-    setShowMap,
-    tailwindMobileMap,
-    setTailwindMobileMap,
-    tailwindMobileList,
-    setTailwindMobileList,
-  ]: any = useSearchContext();
+  const [search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation, bank, setBank, comments, setComments, toggle, setToggle, mapCode, setMapCode, showMap, setShowMap, tailwindMobileMap, setTailwindMobileMap, tailwindMobileList, setTailwindMobileList, commentInput, setCommentInput, usernameGlobal, setUsernameGlobal]: any = useSearchContext();
 
   const router = useRouter();
   const element = bank;
@@ -48,12 +26,6 @@ export default function MoreInfoBank() {
     router.push("/find");
   }
 
-
-  // https://www.google.com/maps/embed/v1/place?key=${key}${mapCoded}
-  //`https://www.google.com/maps/embed/v1/directions?key=${key}&origin=${search}&destination=${location}&mode=transit`
-
-  
-  //const mapCodeDirections = `&origin=${search}&destination=${location}
   const mapCodeDirections = `https://www.google.com/maps/embed/v1/directions?key=${key}&origin=${search}&destination=${location}&mode=transit`
 
   function handleClick() {
@@ -113,7 +85,7 @@ export default function MoreInfoBank() {
               </svg>
             </Button>
           </Card>
-          <CommentsBlock data={comments} />
+          <CommentsBlock data={comments}/>
         </div>
       </div>
       <div
@@ -141,9 +113,9 @@ export default function MoreInfoBank() {
               {element.email}
             </p>
             <Button
+
               onClick={() => {
                 handleClick()
-                console.log("directions clicked");
               }}
             >
               Directions

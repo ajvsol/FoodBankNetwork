@@ -15,30 +15,7 @@ import supabase from "../../components/supabaseClient";
 import MobileMapListSwitch from "../../components/MobileMapListSwitch";
 
 export default function About() {
-  const [
-    search,
-    setSearch,
-    text,
-    setText,
-    searchResults,
-    setSearchResults,
-    location,
-    setLocation,
-    bank,
-    setBank,
-    comments,
-    setComments,
-    toggle,
-    setToggle,
-    mapCode,
-    setMapCode,
-    showMap,
-    setShowMap,
-    tailwindMobileMap,
-    setTailwindMobileMap,
-    tailwindMobileList,
-    setTailwindMobileList,
-  ]: any = useSearchContext();
+  const [search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation, bank, setBank, comments, setComments, toggle, setToggle, mapCode, setMapCode, showMap, setShowMap, tailwindMobileMap, setTailwindMobileMap, tailwindMobileList, setTailwindMobileList, commentInput, setCommentInput, usernameGlobal, setUsernameGlobal]: any = useSearchContext();
   const router = useRouter();
 
    const [cardIndex, setCardIndex] = useState(0)
@@ -147,7 +124,7 @@ export default function About() {
             {searchResults.map((element: any, index: number) => { 
               function selectedCardCheck(index:number) {
                 if (cardIndex === index)
-               return "bg-[#A5BE00]"
+                  return "bg-green-500 dark:bg-green-600"
               }
             
               return (
@@ -159,12 +136,9 @@ export default function About() {
                     setCardIndex(index);
                     selectedCardCheck(index)
                   }}
-                  className={ `hover:cursor-pointer
-                   
-                   ${selectedCardCheck(index)}
-                  hover:bg-green-500 
-                  active:bg-yellow-700
-                  focus:bg-red-500`}
+                  className={ `hover:cursor-pointer ${selectedCardCheck(index)}
+                  hover:bg-yellow-400 dark:hover:bg-yellow-800
+                  active:bg-purple-700 focus:bg-red-500`}
                 >
                   <h5 className="text-l font-bold tracking-tight text-gray-900  dark:text-white">
                     {element.name}
