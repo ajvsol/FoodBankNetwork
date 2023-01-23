@@ -19,23 +19,10 @@ export default function MoreInfoBank() {
 
   const router = useRouter();
   const element = bank;
-  const user = useUser()
-  let userId = user?.id
 
   function goBack() {
     router.push("/find");
   }
-
-  async function insertComment() {
-    console.log()
-    let slugData = bank.foodbank.slug;
-    const { data, error } = await supabase
-      .from("comments")
-      .insert([{ uuid_author: userId,  FK_username: usernameGlobal, slug: slugData, comment: commentInput}])
-      //doesnt rerender after posting yet
-  }
-
-
 
   return (
     <>
@@ -87,7 +74,7 @@ export default function MoreInfoBank() {
               </svg>
             </Button>
           </Card>
-          <CommentsBlock data={comments} />
+          <CommentsBlock data={comments}/>
         </div>
       </div>
       <div
@@ -115,8 +102,7 @@ export default function MoreInfoBank() {
               {element.email}
             </p>
             <Button
-              onClick={() => {
-                insertComment()             }}
+              onClick={() => {console.log('map directions button clicked')}}
             >
               Directions
               <svg
