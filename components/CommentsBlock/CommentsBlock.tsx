@@ -19,27 +19,36 @@ export default function CommentsBlock({data}: any) {
       //doesnt rerender after posting yet
   }
 
-  return (
-    <>
-      <div id="textarea">
-        <div className="mb-2 block p-2">
-          <Label
-            htmlFor="comment"
-            value="Your comment"
+  function renderCommentForm() {
+    console.log(`usernameGlobal: `, usernameGlobal)
+    if (usernameGlobal) {
+      return <div id='auth-user-post-comment'>
+        <div id="textarea">
+          <div className="mb-2 block p-2">
+            <Label
+              htmlFor="comment"
+              value="Your comment"
+            />
+          </div>
+
+          <Textarea
+            id="comment"
+            placeholder="Leave a comment..."
+            required={true}
+            rows={4}
+            onChange={(e) => setCommentInput(e.target.value)}
           />
         </div>
-
-        <Textarea
-          id="comment"
-          placeholder="Leave a comment..."
-          required={true}
-          rows={4}
-          onChange={(e) => setCommentInput(e.target.value)}
-        />
+        <Button type="submit" onClick={() => insertComment()} className='m-2'>
+          Submit
+        </Button>
       </div>
-      <Button type="submit" onClick={() => insertComment()} className='m-2'>
-        Submit
-      </Button>
+    }
+  }
+
+  return (
+    <>
+      {renderCommentForm()}
       <h1 className=" text-gray-900 text-xl p-2 dark:text-gray-300">
         Comments
       </h1>
