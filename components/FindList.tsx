@@ -48,7 +48,7 @@ const cssDarkMode = `
   dark:active:bg-blue-900
   `;
   const cardSelectColour = `
-  bg-lime-400 dark:bg-green-400
+  bg-lime-400 dark:bg-green-900
   `;
 
   useEffect(()=>{

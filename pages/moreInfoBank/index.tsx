@@ -45,7 +45,9 @@ export default function MoreInfoBank() {
     <>
       <div className="p-3">
         <NavBar />
+        <div className="py-2">
         <SearchBar />
+        </div>
       </div>
       <Button onClick={goBack} color="warning" className="ml-3 m-1">
         Go Back
