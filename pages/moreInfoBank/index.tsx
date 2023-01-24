@@ -67,7 +67,7 @@ export default function MoreInfoBank() {
             </p>
             <Button
               onClick={() => {
-                console.log("directions clicked");
+                handleClick()
               }}
             >
               Directions
