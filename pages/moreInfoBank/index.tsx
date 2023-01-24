@@ -17,7 +17,7 @@ import MobileMapListSwitch from "../../components/MobileMapListSwitch";
 import { useUser, useSupabaseClient, Session } from '@supabase/auth-helpers-react'
 
 export default function MoreInfoBank() {
-  const {search, location, setLocation, bank, setBank, comments, setComments, toggle, setToggle, mapCode, setMapCode, showMap, setShowMap, tailwindMobileMap, setTailwindMobileMap, tailwindMobileList}: any = useSearchContext();
+  const {search, location, setLocation, bank, setBank, comments, setComments, toggle, setToggle, mapCode, setMapCode, showMap, setShowMap, tailwindMobileMap, setTailwindMobileMap, tailwindMobileList, setTailwindMobileList}: any = useSearchContext();
 
   const router = useRouter();
   const element = bank;
@@ -29,10 +29,16 @@ export default function MoreInfoBank() {
   const mapCodeDirections = `https://www.google.com/maps/embed/v1/directions?key=${key}&origin=${search}&destination=${location}&mode=transit`
 
   function handleClick() {
-    console.log ("hello")
+    
+    setShowMap(true);
+    console.log(`showMap=`, showMap);
+    setTailwindMobileMap("sm:flex");
+    setTailwindMobileList("sm:hidden");
    
     setMapCode(mapCodeDirections);
     console.log("MapCode:", mapCode);
+
+
   }
 
   return (
