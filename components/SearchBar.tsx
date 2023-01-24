@@ -9,9 +9,9 @@ import { SearchContextProvider, useSearchContext } from '../context/search'
 import Router from 'next/router';
 
 export default function SearchBar() {
-  const [
+  const {
     search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation, bank, setBank, comments, setComments, toggle, setToggle, mapCode, setMapCode, showMap, setShowMap, tailwindMobileMap, setTailwindMobileMap, tailwindMobileList, setTailwindMobileList
-  ] = useSearchContext();
+   } = useSearchContext();
   const router = useRouter();
 
 
