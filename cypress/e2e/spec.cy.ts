@@ -4,8 +4,21 @@ export {}
 const homeURL = 'http://localhost:3000';
 
 describe('template spec', () => {
-  it('passes', () => {
+  it('should load the find page when the user searches a location', () => {
     cy.visit(homeURL)
+    cy
+      .get('[data-testid="simple-search"]')
+      .click()
+      .type('london')
+    cy
+      .get('[data-testid="SearchBarButton"]')
+      .click()
+    cy
+      .url()
+      .should('include', '/find')
+  })
+  it('should load the directions to the location when the user presses the Directions button', () => {
+    
   })
 })
 
