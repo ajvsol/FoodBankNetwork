@@ -12,7 +12,7 @@ export default function Account({ session }: { session: Session }) {
   const [website, setWebsite] = useState<Profiles['website']>(null)
   const [avatar_url, setAvatarUrl] = useState<Profiles['avatar_url']>(null)
 
- const [search, setSearch, text, setText, searchResults, setSearchResults, location, setLocation, bank, setBank, comments, setComments, toggle, setToggle, mapCode, setMapCode, showMap, setShowMap, tailwindMobileMap, setTailwindMobileMap, tailwindMobileList, setTailwindMobileList, commentInput, setCommentInput, usernameGlobal, setUsernameGlobal]: any = useSearchContext();
+ const { setUsernameGlobal }: any = useSearchContext();
 
   useEffect(() => {
     getProfile()
@@ -83,7 +83,8 @@ export default function Account({ session }: { session: Session }) {
     <div className="form-widget">
       <div>
         <label htmlFor="email">Email</label>
-        <input id="email" type="text" value={session.user.email} disabled />
+        <input id="email" type="text" value={session.user.email} disabled className='text-gray-400'/>
+        
       </div>
       <div>
         <label htmlFor="username">Username</label>
@@ -91,6 +92,7 @@ export default function Account({ session }: { session: Session }) {
           id="username"
           type="text"
           value={username || ''}
+          className='text-gray-900'
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
@@ -100,6 +102,7 @@ export default function Account({ session }: { session: Session }) {
           id="website"
           type="website"
           value={website || ''}
+          className='text-gray-900'
           onChange={(e) => setWebsite(e.target.value)}
         />
       </div>

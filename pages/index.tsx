@@ -12,30 +12,23 @@ export default function Home() {
   return (
     <>
       <div className='flex flex-col h-screen min-h-screen bg-peachey'>
-			<NavBarHome/>
-			<div className='flex flex-col margin items-center gap-5 flex-1'>
-				<Link href='/'>
-					<Image
-						src="/logo1.png"
-						alt="logo-image"
-						width="300"
-						height="200"
-						className='flex mt-20'
-					/>
-				</Link>
-				<p
-				className='text-gray-900 dark:text-gray-300'
-				>Find your nearest food bank:
-				</p>
-				<SearchBar/>
-			</div>	
-		</div>
-      
-          
-      
-         
-        
-           
+				<div className='flex flex-col margin items-center gap-5 flex-1'>
+					<Link href='/'>
+						<Image
+							src="/logo1.png"
+							alt="logo-image"
+							width="300"
+							height="200"
+							className='flex mt-20'
+						/>
+					</Link>
+					<p
+						className='text-gray-900 dark:text-gray-300'
+					>Find your nearest food bank:
+					</p>
+					<SearchBar/>
+				</div>	
+			</div>
     </>
   )
 }

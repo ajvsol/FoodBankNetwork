@@ -3,7 +3,7 @@ import { Button } from "flowbite-react";
 import { useRouter } from "next/navigation";
 
 export default function MobileMapListSwitch() {
-  const [
+  const {
     search,
     setSearch,
     text,
@@ -26,7 +26,7 @@ export default function MobileMapListSwitch() {
     setTailwindMobileMap,
     tailwindMobileList,
     setTailwindMobileList,
-  ]: any = useSearchContext();
+}: any = useSearchContext();
   const router = useRouter();
 
   function handleMobileMapSwitch() {
