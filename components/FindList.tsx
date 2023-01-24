@@ -95,6 +95,7 @@ const cssDarkMode = `
 						onClick={() => {
 							moreInfo(index);
 						}}
+						data-testid={`cardbutton-${index}`}
 					>
 						More Info
 						<svg

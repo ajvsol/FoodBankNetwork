@@ -3,7 +3,7 @@ export {}
 //const homeURL = 'https://foodbanknetwork.vercel.app';
 const homeURL = 'http://localhost:3000';
 
-describe('template spec', () => {
+describe('Basic tests', () => {
   it('should load the find page when the user searches a location', () => {
     cy.visit(homeURL)
     cy
@@ -20,12 +20,25 @@ describe('template spec', () => {
   it('contains the map element', ()=> {
     cy
     .visit('http://localhost:3000/find')
-    // .get ('[`data-testid={`card-2`}]')
     .get('[data-testid="MapMain"]')    
   })
-  it('should should go to the correct moreInfo page', ()=>{
+  it('should search from Find page and go to the correct moreInfo page', () => {
+    cy.visit(`${homeURL}/find`)
     cy
-    .get('[data-testid="card-2"]')
+      .get('[data-testid="simple-search"]')
+      .click()
+      .type('london')
+    cy
+      .get('[data-testid="SearchBarButton"]')
+      .click()
+    cy
+      .get('[data-testid="card-3"]')
+    cy
+      .get('[data-testid="cardbutton-3"]')
+      .click()
+    cy
+      .url()
+      .should('include', '/moreInfoBank')
   })
 
   
