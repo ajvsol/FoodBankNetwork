@@ -1,4 +1,5 @@
 const key = process.env.NEXT_PUBLIC_GOOGLE_KEY
+import { useEffect, useState } from "react";
 import { Card, Button } from "flowbite-react";
 import { useSearchContext } from "../context/search";
 import { useRouter } from "next/navigation";
@@ -35,14 +36,38 @@ export default function FindList() {
     updateMap(key, searchResults[index].lat_lng);
   }
 
+  const [cssToggle, setCssToggle] = useState(``)  
+
+  const cssLightMode =`
+  hover:bg-blue-400 
+  active:bg-blue-500
+`;
+
+const cssDarkMode = `
+  dark:hover:bg-blue-800
+  dark:active:bg-blue-900
+  `;
+  const cardSelectColour = `
+  bg-lime-400 dark:bg-green-400
+  `;
+
+  useEffect(()=>{
+	setCssToggle(``)
+    setCssToggle (cardSelectColour)
+  },[cardIndex])
+  
+    function selectedCardCheck(index:number) {
+      if (cardIndex === index)
+        return cssToggle
+    }
+  
+  
+
+
 	return <div
 		className="space-y-1">
 		{searchResults.map((element: any, index: number) => { 
-			function selectedCardCheck(index:number) {
-				if (cardIndex === index)
-					return "bg-green-500 dark:bg-green-600"
-			}
-		
+
 			return (
 
 				<Card 
@@ -53,8 +78,11 @@ export default function FindList() {
 						selectedCardCheck(index)
 					}}
 					className={ `hover:cursor-pointer ${selectedCardCheck(index)}
-					hover:bg-yellow-400 dark:hover:bg-yellow-800
-					active:bg-yellow-900 focus:bg-red-500`}
+					
+					${cssDarkMode} ${cssLightMode}
+					${selectedCardCheck(index)}
+					`}
+	
 				>
 					<h5 className="text-l font-bold tracking-tight text-gray-900  dark:text-white">
 						{element.name}
