@@ -16,6 +16,7 @@ export default function About() {
     tailwindMobileList,
   }: any = useSearchContext();
 
+
   return (
     <div id="everything" className="dark:bg-gray-900">
       <div id='header' className="p-3">
