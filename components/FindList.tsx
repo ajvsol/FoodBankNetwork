@@ -72,6 +72,7 @@ const cssDarkMode = `
 
 				<Card 
 					key={index}
+					data-testid={`card-${index}`}
 					onClick={() => {
 						handleCard(index);
 						setCardIndex(index);

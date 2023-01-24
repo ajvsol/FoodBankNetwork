@@ -17,6 +17,18 @@ describe('template spec', () => {
       .url()
       .should('include', '/find')
   })
+  it('contains the map element', ()=> {
+    cy
+    .visit('http://localhost:3000/find')
+    // .get ('[`data-testid={`card-2`}]')
+    .get('[data-testid="MapMain"]')    
+  })
+  it('should should go to the correct moreInfo page', ()=>{
+    cy
+    .get('[data-testid="card-2"]')
+  })
+
+  
   it('should load the directions to the location when the user presses the Directions button', () => {
     
   })
