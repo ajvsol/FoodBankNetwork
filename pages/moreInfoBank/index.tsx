@@ -56,7 +56,7 @@ export default function MoreInfoBank() {
         <div
           id="List"
           className={`
-            overflow-auto p-2 ${tailwindMobileList}
+            overflow-auto p-2  ${tailwindMobileList}
           `}>
           <Card className="">
             <h5 className="text-l font-bold tracking-tight text-gray-900 dark:text-white">
@@ -103,9 +103,10 @@ export default function MoreInfoBank() {
           id="List"
           className="
             overflow-auto
+            
             "
           >
-          <Card className="">
+          <Card className="my-3">
             <h5 className="text-l font-bold tracking-tight text-gray-900 dark:text-white">
               {element.name}
             </h5>
