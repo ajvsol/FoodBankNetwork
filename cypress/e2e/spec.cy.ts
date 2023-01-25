@@ -32,13 +32,29 @@ describe('Basic tests', () => {
       .get('[data-testid="SearchBarButton"]')
       .click()
     cy
-      .get('[data-testid="card-3"]')
+      .get('#desktop-content > #List > .space-y-1 > [data-testid="card-1"] > .h-full')
+      .click({ multiple: true })
     cy
-      .get('[data-testid="cardbutton-3"]')
-      .click()
+    cy.get('#desktop-content > #List > .space-y-1 > [data-testid="card-1"] > .h-full > [data-testid="cardbutton-1"] > .flex')
+      .click({ multiple: true })
     cy
       .url()
       .should('include', '/moreInfoBank')
+
+  })
+
+  it('more information should be rendered upon the card next to the map element', () => {
+  cy
+    .visit('http://localhost:3000/moreInfoBank')
+  cy
+    .get('[data-testid="simple-search"]')
+    .get('[data-testid="MapMain"]')
+
+  cy
+    .get('#desktop-content > #List > [data-testid="flowbite-card"] > .h-full')
+
+    
+    
   })
 
   
