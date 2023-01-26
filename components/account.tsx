@@ -7,7 +7,7 @@ import {
 import { Database } from "../types/supabase";
 import { useSearchContext } from "../context/search";
 import { Label, TextInput, Button } from "flowbite-react";
-
+import { useRouter } from "next/navigation";
 type Profiles = Database["public"]["Tables"]["profiles"]["Row"];
 
 export default function Account({ session }: { session: Session }) {
@@ -17,6 +17,7 @@ export default function Account({ session }: { session: Session }) {
   const [username, setUsername] = useState<Profiles["username"]>(null);
   const [website, setWebsite] = useState<Profiles["website"]>(null);
   const [avatar_url, setAvatarUrl] = useState<Profiles["avatar_url"]>(null);
+  const router = useRouter();
 
   const { setUsernameGlobal, usernameGlobal }: any = useSearchContext();
 
@@ -53,6 +54,11 @@ export default function Account({ session }: { session: Session }) {
     }
   }
 
+  function nameChange (){
+    setUsernameGlobal("")
+    router.push("/")
+  }
+  
   async function updateProfile({
     username,
     website,
@@ -109,7 +115,7 @@ export default function Account({ session }: { session: Session }) {
           placeholder={usernameGlobal}
         />
       </div>
-      <div>
+      {/* <div>
         <div className="mb-2 block">
           <Label htmlFor="website1" value="Your website" />
         </div>
@@ -118,7 +124,7 @@ export default function Account({ session }: { session: Session }) {
           onChange={(e) => setWebsite(e.target.value)}
           //placeholder={session.user.website}
         />
-      </div>
+      </div> */}
       <Button
         type="submit"
         onClick={() => updateProfile({ username, website, avatar_url })}
@@ -128,7 +134,7 @@ export default function Account({ session }: { session: Session }) {
       <Button
         type="submit"
         color="failure"
-        onClick={() => supabase.auth.signOut()}
+        onClick={() => { nameChange(); supabase.auth.signOut()}}
       >
         Sign Out
       </Button>

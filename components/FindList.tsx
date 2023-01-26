@@ -14,7 +14,8 @@ export default function FindList() {
     const { data, error } = await supabase
       .from("comments")
       .select()
-      .like("slug", slugData);
+      .like("slug", slugData)
+	  .order('id', { ascending: false })
     console.log("supabase url", supabase);
     setComments(data);
   }
