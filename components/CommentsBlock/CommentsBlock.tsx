@@ -18,6 +18,7 @@ export default function CommentsBlock({data}: any) {
       .from("comments")
       .insert([{ uuid_author: userId,  FK_username: usernameGlobal, slug: slugData, comment: commentInput}])
       fetchComments()
+      setCommentInput("")
   }
 
   async function fetchComments() {
@@ -29,7 +30,6 @@ export default function CommentsBlock({data}: any) {
       .order('id', { ascending: false })
     console.log("supabase url", supabase);
     setComments(data);
-    setCommentInput("")
   }
 
 
@@ -51,6 +51,7 @@ export default function CommentsBlock({data}: any) {
             required={true}
             rows={4}
             onChange={(e) => setCommentInput(e.target.value)}
+            value={commentInput}
           />
         </div>
         <Button type="submit" onClick={() => insertComment()} className='m-2'>

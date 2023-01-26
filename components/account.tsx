@@ -103,7 +103,7 @@ export default function Account({ session }: { session: Session }) {
           placeholder={session.user.email}
           disabled={true}
           //required={true}
-        />
+        />asynv
       </div>
       <div>
         <div className="mb-2 block">
