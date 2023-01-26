@@ -19,7 +19,7 @@ export default function Account({ session }: { session: Session }) {
   const [avatar_url, setAvatarUrl] = useState<Profiles["avatar_url"]>(null);
   const router = useRouter();
 
-  const { setUsernameGlobal, usernameGlobal }: any = useSearchContext();
+  const { setUsernameGlobal, usernameGlobal, userNum, setUserNum }: any = useSearchContext();
 
   useEffect(() => {
     getProfile();
@@ -35,6 +35,7 @@ export default function Account({ session }: { session: Session }) {
         .select(`username, website, avatar_url`)
         .eq("id", user.id)
         .single();
+        setUserNum(user.id)
 
       if (error && status !== 406) {
         throw error;
@@ -44,7 +45,7 @@ export default function Account({ session }: { session: Session }) {
         setUsername(data.username);
         setUsernameGlobal(data.username);
         setWebsite(data.website);
-        setAvatarUrl(data.avatar_url);
+        setAvatarUrl(data.avatar_url);    
       }
     } catch (error) {
       alert("Error loading user data!");
@@ -56,6 +57,7 @@ export default function Account({ session }: { session: Session }) {
 
   function nameChange (){
     setUsernameGlobal("")
+    setUserNum()
     router.push("/")
   }
   
@@ -103,7 +105,7 @@ export default function Account({ session }: { session: Session }) {
           placeholder={session.user.email}
           disabled={true}
           //required={true}
-        />asynv
+        />
       </div>
       <div>
         <div className="mb-2 block">
