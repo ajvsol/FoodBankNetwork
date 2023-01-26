@@ -2,11 +2,12 @@ import { Button, Card, Label, Textarea } from "flowbite-react";
 import { useSearchContext } from "../../context/search";
 import supabase from "../../components/supabaseClient";
 import { useUser, useSupabaseClient, Session } from '@supabase/auth-helpers-react'
+import { useRouter } from "next/navigation";
 
 export default function CommentsBlock({data}: any) {
 
-  const { bank, setBank, comments, setComments, toggle, setToggle, mapCode, setMapCode, showMap, setShowMap, tailwindMobileMap, setTailwindMobileMap, tailwindMobileList, setTailwindMobileList, commentInput, setCommentInput, usernameGlobal, setUsernameGlobal}: any = useSearchContext();
-
+  const {searchResults, setSearchResults, bank, setBank, comments, setComments, toggle, setToggle, mapCode, setMapCode, showMap, setShowMap, tailwindMobileMap, setTailwindMobileMap, tailwindMobileList, setTailwindMobileList, commentInput, setCommentInput, usernameGlobal, setUsernameGlobal}: any = useSearchContext();
+  const router = useRouter();
   const user = useUser()
   let userId = user?.id
 
@@ -16,8 +17,21 @@ export default function CommentsBlock({data}: any) {
     const { data, error } = await supabase
       .from("comments")
       .insert([{ uuid_author: userId,  FK_username: usernameGlobal, slug: slugData, comment: commentInput}])
-      //doesnt rerender after posting yet
+      fetchComments()
   }
+
+  async function fetchComments() {
+    let slugData = bank.foodbank.slug;
+    const { data, error } = await supabase
+      .from("comments")
+      .select()
+      .like("slug", slugData)
+      .order('id', { ascending: false })
+    console.log("supabase url", supabase);
+    setComments(data);
+    setCommentInput("")
+  }
+
 
   function renderCommentForm() {
     console.log(`usernameGlobal: `, usernameGlobal)
