@@ -6,6 +6,7 @@ export default function Document() {
     className="bg-[#F3EFE8]
     dark:bg-gray-900">
       <Head />
+        <title>Food Bank Network</title>
       <body>
         <Main />
         <NextScript />

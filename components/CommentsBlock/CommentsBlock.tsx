@@ -6,11 +6,16 @@ import { useRouter } from "next/navigation";
 
 export default function CommentsBlock({data}: any) {
 
-  const {searchResults, setSearchResults, bank, setBank, comments, setComments, toggle, setToggle, mapCode, setMapCode, showMap, setShowMap, tailwindMobileMap, setTailwindMobileMap, tailwindMobileList, setTailwindMobileList, commentInput, setCommentInput, usernameGlobal, setUsernameGlobal}: any = useSearchContext();
+  const {searchResults, setSearchResults, bank, setBank, comments, setComments, toggle, setToggle, mapCode, setMapCode, showMap, setShowMap, tailwindMobileMap, setTailwindMobileMap, tailwindMobileList, setTailwindMobileList, commentInput, setCommentInput, usernameGlobal, setUsernameGlobal, userNum, setUserNum }: any = useSearchContext();
   const router = useRouter();
   const user = useUser()
   let userId = user?.id
 
+  function deleteByUser(element:any){
+    if (element.uuid_author === userNum){
+    deleteComment(element)}
+    else {alert("Please sign in with the correct user credentials to delete this comment")}
+  }
   async function insertComment() {
     console.log()
     let slugData = bank.foodbank.slug;
@@ -31,7 +36,13 @@ export default function CommentsBlock({data}: any) {
     console.log("supabase url", supabase);
     setComments(data);
   }
-
+  async function deleteComment(element:any){
+  const { error } = await supabase
+  .from('comments')
+  .delete()
+  .eq('id', element.id)
+  fetchComments()
+  }
 
   function renderCommentForm() {
     console.log(`usernameGlobal: `, usernameGlobal)
@@ -71,15 +82,22 @@ export default function CommentsBlock({data}: any) {
         {data.map((element: any, index: any) => {
           return (
             <Card key={index} className="">
-              <h5 className="text-l font-bold tracking-tight text-gray-900 dark:text-white">
-                {element.name}
+              {/* <h5 className="text-l font-bold tracking-tight text-gray-900 dark:text-white">
+                {element.uuid_author}
+              </h5> */}
+              <h5 className="font-light text-gray-900 dark:text-gray-300">
+                {element.FK_username} said -
               </h5>
-              <p className="font-light text-gray-900 dark:text-gray-300">
-                {element.author}
-              </p>
               <p className="font-light text-gray-900 dark:text-gray-300">
                 {element.comment}
               </p>
+              <button className=""
+          onClick={() => {
+            deleteByUser(element);
+          }}
+        >
+          🗑️
+        </button>
             </Card>
           );
         })}
