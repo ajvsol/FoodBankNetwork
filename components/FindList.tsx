@@ -10,7 +10,7 @@ export default function FindList() {
 	const router = useRouter();
 
 	async function fetchComments(index: number) {
-    let slugData = searchResults[index].foodbank.slug;
+    let slugData = searchResults[index].lat_lng;
     const { data, error } = await supabase
       .from("comments")
       .select()

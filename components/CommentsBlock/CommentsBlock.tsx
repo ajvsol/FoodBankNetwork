@@ -18,7 +18,7 @@ export default function CommentsBlock({data}: any) {
   }
   async function insertComment() {
     console.log()
-    let slugData = bank.foodbank.slug;
+    let slugData = bank.lat_lng;
     const { data, error } = await supabase
       .from("comments")
       .insert([{ uuid_author: userId,  FK_username: usernameGlobal, slug: slugData, comment: commentInput}])
@@ -27,11 +27,11 @@ export default function CommentsBlock({data}: any) {
   }
 
   async function fetchComments() {
-    let slugData = bank.foodbank.slug;
+    let slugData = bank.lat_lng;
     const { data, error } = await supabase
       .from("comments")
       .select()
-      .like("slug", slugData)
+      .eq("slug", slugData)
       .order('id', { ascending: false })
     console.log("supabase url", supabase);
     setComments(data);
