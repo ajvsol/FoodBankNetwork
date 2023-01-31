@@ -70,8 +70,13 @@ export default function CommentsBlock({data}: any) {
         </Button>
       </div>
     }
-  }
-
+    else if (!usernameGlobal){return <div>
+      <p>
+        Please sign in to leave a comment
+      </p>
+    </div>
+  }}
+  
   return (
     <>
       {renderCommentForm()}
