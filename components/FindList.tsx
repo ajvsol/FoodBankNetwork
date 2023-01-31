@@ -73,6 +73,7 @@ const cssDarkMode = `
 
 				<Card 
 					key={index}
+					data-testid={`card-${index}`}
 					onClick={() => {
 						handleCard(index);
 						setCardIndex(index);
@@ -95,6 +96,7 @@ const cssDarkMode = `
 						onClick={() => {
 							moreInfo(index);
 						}}
+						data-testid={`cardbutton-${index}`}
 					>
 						More Info
 						<svg
