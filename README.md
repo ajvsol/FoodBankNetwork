@@ -2,7 +2,7 @@
 
 This app helps you to locate food banks in your local area and share reviews with other users.
 
-https://user-images.githubusercontent.com/22418751/215138852-8e47c81a-7688-4da4-a6fa-0937019d21b9.mp4
+https://user-images.githubusercontent.com/22418751/215824190-292688c6-78d6-4cee-82bb-da861a8e9c6d.mp4
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
