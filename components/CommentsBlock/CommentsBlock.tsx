@@ -45,7 +45,6 @@ export default function CommentsBlock({data}: any) {
   }
 
   function renderCommentForm() {
-    console.log(`usernameGlobal: `, usernameGlobal)
     if (usernameGlobal) {
       return <div id='auth-user-post-comment'>
         <div id="textarea">
@@ -71,7 +70,7 @@ export default function CommentsBlock({data}: any) {
       </div>
     }
     else if (!usernameGlobal){return <div>
-      <p>
+      <p className="dark:text-gray-100">
         Please sign in to leave a comment
       </p>
     </div>
